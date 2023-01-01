@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DELETE</title>
+  <meta name="description" content="DELETE" />
+  <meta name="revised" content="08/07/2022" />
+  <meta name="author" content = "Arpit Khandelwal" />
+  <meta http-equiv = "Content-Type" content = "text/html; charset = UTF-8" />
+  <meta http-equiv = "Content-Script-Type" content = "text/JavaScript" />
+  <link rel = "stylesheet" type = "text/css" href = "../css/index.css">
+  <script type = "text/javascript" src = "../javascript/index.js"/></script>
+  <noscript>
+    JavaScript is disabled. Please enabled it.
+  </noscript>
+</head>
+    <body>
+
+<table>
+  <tr>
+    
+    <td><span style="font-size:20px; color:rgb(30, 156, 235)">DELETE</span></td>
+  </tr>
+</table>
+<form>
+<textarea  id="coboldb2cicstextarea" rows="22" cols="50">
+//MATERFS JOB NOTIFY=&SYSUID
+//*
+//STEP1 EXEC PGM=IDCAMS
+//SYSPRINT DD SYSOUT=*
+//DD1 DD DISP=SHR,DSN=ARPIT.CHECK.DATA
+//SYSIN DD DATA
+    DELETE ARPIT.CHECK.DATA
+/*
+</textarea>
+</form>
+   
+</body>
+</html>

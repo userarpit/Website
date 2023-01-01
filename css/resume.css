@@ -1,0 +1,277 @@
+div.formatcertificate:hover {
+    color:blue;
+}
+
+a {
+    text-decoration: none;
+}
+
+.headingtable {
+    border: 0px solid black;
+    font-size: 10px;    
+    font-family: Verdana, Geneva, Tahoma, sans-serif; 
+    width: 20%; 
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-left: 5%;
+    margin-top: 50px;    
+}
+
+.educationheadingtable {
+    border: 0px solid;
+    font-size: 22px;    
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-left: 5%;
+    margin-top: 125px;
+    color:rgb(30, 156, 235);
+    vertical-align: top;
+}
+
+.educationcontenttable {
+    border: 0px solid;
+    font-family: Verdana, Geneva, Tahoma, sans-serif; 
+    font-size: 14px;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-left: 1%;
+    margin-top: 175px;
+    width: 40%;
+    height: 40%;
+    
+}
+
+.educationcontenttablelefttd {
+    border: 0px solid;
+    width: 49%;
+    vertical-align: top;
+    text-align: right;
+    padding-right: 3%;
+    height: 50%;
+}
+
+.educationcontenttablemiddletd {
+    border: 0px solid;
+    width:2%;
+    height: 50%;
+}
+
+.educationcontenttablerighttd {
+    border: 0px solid;
+    width: 49%;
+    vertical-align: top;
+    text-align: left;
+    padding-left: 3%;
+    height: 50%;    
+}
+
+.timeline {
+    position: absolute;
+    width: 1px;
+    background-color: lightslategrey;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    height: 100%;
+}
+
+.circle1 {
+    
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background-color: white;
+    border: 1px solid rgb(30, 156, 235);
+    border-radius: 50%;
+}
+
+.educationcircle2 {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    top: 50%;
+    background-color: white;
+    border: 1px solid rgb(30, 156, 235);
+    border-radius: 50%;
+    
+}
+
+.experiencecircle2 {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    top: 33%;
+    background-color: white;
+    border: 1px solid rgb(30, 156, 235);
+    border-radius: 50%;
+    
+}
+
+.circle3 {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    top: 66%;
+    background-color: white;
+    border: 1px solid rgb(30, 156, 235);
+    border-radius: 50%;
+    
+}
+
+.experienceheadingtable {
+    border: 0px solid;
+    font-size: 22px;    
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-left: 5%;
+    margin-top: 50%;
+    color:rgb(30, 156, 235);
+    vertical-align: top;
+}
+
+.experiencecontenttable {
+    border: 0px solid;
+    font-family: Verdana, Geneva, Tahoma, sans-serif; 
+    font-size: 14px;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-left: 1%;
+    margin-top: 55%;
+    width: 40%;
+    height: 70%;    
+}
+
+.experiencecontenttablelefttd {
+    border: 0px solid;
+    width: 49%;
+    height: 33%;
+    vertical-align: top;
+    text-align: right;
+    padding-right: 3%;
+}
+
+.experiencecontenttablemiddletd {
+    border: 0px solid;
+}
+
+.experiencecontenttablerighttd {
+    border: 0px solid;
+    height: 33%;
+    width: 49%;
+    vertical-align: top;
+    text-align: left;
+    padding-left: 3%;   
+}
+
+.experiencetimeline {
+    position: absolute;
+    width: 1px;
+    background-color: lightslategrey;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    height: 100%;
+}
+
+.codingskillsheading {
+    border: 0px solid;
+    font-size: 22px;    
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-left: 50%;
+    margin-top: 125px;
+    color:rgb(30, 156, 235);
+    vertical-align: top;  
+}
+
+.codingskillscontenttable {
+    border: 0px solid;
+    font-family: Verdana, Geneva, Tahoma, sans-serif; 
+    font-size: 14px;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 50%;
+    right: 0;
+    margin-top: 175px;
+    width: 40%;       
+}
+
+.codingskillscontenttd {border: 0px solid;
+    vertical-align: top;
+    text-align: left;  
+}
+
+.formatskills {
+    background-color: rgb(30, 156, 235);
+    color:white;   
+    height:100%;
+    vertical-align: middle;
+    border: 1px solid lightslategrey;
+    border-radius: 5%;
+    display: inline-block;
+    margin-right: 0.75em;
+    margin-bottom: 0.75em;
+    padding: 1%;
+}
+
+.certificateheading {
+    border: 0px solid;
+    font-size: 22px;    
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-left: 50%;
+    margin-top: 35%;
+    color:rgb(30, 156, 235);
+    vertical-align: top;  
+}
+
+.certificatecontenttable {
+    border: 0px solid;
+    font-family: Verdana, Geneva, Tahoma, sans-serif; 
+    font-size: 14px;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 50%;
+    right: 0;
+    margin-top: 40%;
+    width: 46%;       
+}
+
+.certificatecontenttd {
+    border: 0px solid;
+    vertical-align: top;
+    text-align: left; 
+}
+
+.formatcertificate {
+    color:lightslategrey;
+    height:100%;
+    vertical-align: middle;
+    border-radius: 5%;
+    display: inline-block;
+    margin-right: 0.75em;
+    margin-bottom: 0.75em;
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Call subprogram using by content</title>
+  <meta name="description" content="Call subprogram using by content" />
+  <meta name="revised" content="08/07/2022" />
+  <meta name="author" content = "Arpit Khandelwal" />
+  <meta http-equiv = "Content-Type" content = "text/html; charset = UTF-8" />
+  <meta http-equiv = "Content-Script-Type" content = "text/JavaScript" />
+  <link rel = "stylesheet" type = "text/css" href = "../css/index.css">
+  <script type = "text/javascript" src = "../javascript/index.js"/></script>
+  <noscript>
+    JavaScript is disabled. Please enabled it.
+  </noscript>
+</head>
+    <body>
+
+<table>
+    <tr>
+        
+        <td><span style="font-size:20px; color:rgb(30, 156, 235)">Call subprogram using by content</span></td>
+    </tr>
+</table>
+<form>
+<textarea  id="coboldb2cicstextarea" rows="22" cols="50">
+       ID DIVISION.
+       PROGRAM-ID. MPGM1.
+       DATA DIVISION.
+       WORKING-STORAGE SECTION.
+       01 WS-COMMAREA PIC X(50) VALUE 'QWERTY'.
+       77 WS-XNUM PIC X(3) VALUE '123'.
+       77 WS-NUM  PIC 9(3).
+       PROCEDURE DIVISION.
+           DISPLAY 'BEFORE' WS-COMMAREA.
+           CALL 'SPGM1' USING WS-COMMAREA.
+           DISPLAY 'AFTER' WS-COMMAREA.
+           MOVE 'ABC' TO WS-COMMAREA.
+           CALL 'SPGM1' USING BY CONTENT   WS-COMMAREA.
+           DISPLAY 'AFTER' WS-COMMAREA.
+           COMPUTE WS-NUM = FUNCTION NUMVAL(WS-XNUM).
+           DISPLAY WS-NUM.
+           ADD 12 TO WS-NUM.
+           DISPLAY WS-NUM.
+           STOP RUN.
+</textarea>
+</form>
+   
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>INSPECT TALLYING</title>
+  <meta name="description" content="INSPECT TALLYING" />
+  <meta name="revised" content="08/07/2022" />
+  <meta name="author" content = "Arpit Khandelwal" />
+  <meta http-equiv = "Content-Type" content = "text/html; charset = UTF-8" />
+  <meta http-equiv = "Content-Script-Type" content = "text/JavaScript" />
+  <link rel = "stylesheet" type = "text/css" href = "../css/index.css">
+  <script type = "text/javascript" src = "../javascript/index.js"/></script>
+  <noscript>
+    JavaScript is disabled. Please enabled it.
+  </noscript>
+</head>
+    <body>
+
+<table>
+    <tr>
+        
+        <td><span style="font-size:20px; color:rgb(30, 156, 235)">INSPECT TALLYING</span></td>
+    </tr>
+</table>
+<form>
+<textarea  id="coboldb2cicstextarea" rows="22" cols="50">
+       IDENTIFICATION DIVISION.                        
+       PROGRAM-ID. INSPECT1.                           
+       DATA DIVISION.                                  
+       WORKING-STORAGE SECTION.                        
+       01 WS-STR1   PIC X(16) VALUE 'ARPIT KHANDELWAL'.
+       01 WS-IDEN1    PIC 9(2).                        
+       01 WS-IDEN2    PIC 9(2).                        
+       01 WS-IDEN3    PIC 9(2).                        
+       01 WS-IDEN4    PIC 9(2).                        
+         PROCEDURE DIVISION.                                             
+           INITIALIZE WS-IDEN1.                                        
+           INSPECT WS-STR1 TALLYING WS-IDEN1 FOR ALL 'H'.              
+           DISPLAY "H FOUND " WS-IDEN1 " TIMES".                       
+                                                                       
+           INITIALIZE WS-IDEN1.                                        
+           INSPECT WS-STR1 TALLYING WS-IDEN1 FOR CHARACTERS.           
+           DISPLAY WS-IDEN1.                                           
+                                                                       
+           INITIALIZE WS-IDEN2.                                        
+           INSPECT WS-STR1 TALLYING WS-IDEN2 FOR CHARACTERS BEFORE "T".
+           DISPLAY WS-IDEN2.                                           
+                                                                       
+           INITIALIZE WS-IDEN3.                                        
+           INSPECT WS-STR1 TALLYING WS-IDEN3 FOR CHARACTERS AFTER "K". 
+           DISPLAY WS-IDEN3.                                           
+                                                                       
+           INITIALIZE WS-IDEN4.                                        
+           INSPECT WS-STR1 TALLYING WS-IDEN4 FOR LEADING "A".          
+           DISPLAY WS-IDEN4.                                           
+                                                                       
+           INITIALIZE WS-IDEN4.                                        
+           INSPECT WS-STR1 TALLYING WS-IDEN4 FOR ALL "A" BEFORE "L".   
+           DISPLAY WS-IDEN4.                                           
+                                                                   
+           MOVE 'ARPIT KHANDELWAL' TO WS-STR1.                     
+           INITIALIZE WS-IDEN4.                                    
+           INSPECT WS-STR1 TALLYING WS-IDEN4 FOR ALL "L" AFTER "H".
+           DISPLAY WS-IDEN4.                                       
+                                                                   
+           INITIALIZE WS-IDEN4.                                    
+           INSPECT WS-STR1 TALLYING WS-IDEN4 FOR ALL SPACES.       
+           DISPLAY WS-IDEN4.                                       
+                                                                   
+           INITIALIZE WS-IDEN4.                                    
+           INSPECT WS-STR1 TALLYING WS-IDEN4 FOR ALL SPACES        
+           BEFORE "H".                                             
+           DISPLAY WS-IDEN4.                                       
+                                                                   
+           INITIALIZE WS-IDEN1, WS-IDEN2, WS-IDEN3.                
+           INSPECT WS-STR1 TALLYING WS-IDEN1 FOR ALL SPACES        
+                                    WS-IDEN2 FOR ALL "L"           
+                                    WS-IDEN3 FOR LEADING "A".      
+           DISPLAY WS-IDEN1 ' ' WS-IDEN2 ' ' WS-IDEN3.             
+           STOP RUN.                                                     
+</textarea>
+</form>
+   
+</body>
+</html>

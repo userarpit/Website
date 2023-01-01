@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>IEBGENER GENERATE</title>
+  <meta name="description" content="IEBGENER GENERATE" />
+  <meta name="revised" content="08/07/2022" />
+  <meta name="author" content = "Arpit Khandelwal" />
+  <meta http-equiv = "Content-Type" content = "text/html; charset = UTF-8" />
+  <meta http-equiv = "Content-Script-Type" content = "text/JavaScript" />
+  <link rel = "stylesheet" type = "text/css" href = "../css/index.css">
+  <script type = "text/javascript" src = "../javascript/index.js"/></script>
+  <noscript>
+    JavaScript is disabled. Please enabled it.
+  </noscript>
+</head>
+    <body>
+
+<table>
+  <tr>
+    
+    <td><span style="font-size:20px; color:rgb(30, 156, 235)">IEBGENER GENERATE</span></td>
+  </tr>
+</table>
+<form>
+<textarea  id="coboldb2cicstextarea" rows="22" cols="50">
+//MATERFG JOB NOTIFY=&SYSUID
+//COPY1   EXEC PGM=IEBGENER
+//SYSPRINT DD SYSOUT=*
+//SYSUT1 DD DSN=ARPIT.SEQ.NEW,DISP=SHR
+//SYSUT2 DD DSN=ARPIT.SEQA.DATA,DISP=SHR
+//SYSIN DD *
+    GENERATE MAXFLDS=5,MAXLITS=4
+    RECORD FIELD=(3,1,,1),FIELD=(5,9,ZP,4),FIELD=(6,18,,9),
+           FIELD=(1,28,,15),FIELD=(7,35,ZP,16)
+/*
+</textarea>
+</form>
+   
+</body>
+</html>

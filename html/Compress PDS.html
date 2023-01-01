@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Compress PDS</title>
+  <meta name="description" content="Compress PDS" />
+  <meta name="revised" content="08/07/2022" />
+  <meta name="author" content = "Arpit Khandelwal" />
+  <meta http-equiv = "Content-Type" content = "text/html; charset = UTF-8" />
+  <meta http-equiv = "Content-Script-Type" content = "text/JavaScript" />
+  <link rel = "stylesheet" type = "text/css" href = "../css/index.css">
+  <script type = "text/javascript" src = "../javascript/index.js"/></script>
+  <noscript>
+    JavaScript is disabled. Please enabled it.
+  </noscript>
+</head>
+    <body>
+
+<table>
+  <tr>
+    
+    <td><span style="font-size:20px; color:rgb(30, 156, 235)">Compress PDS</span></td>
+  </tr>
+</table>
+<form>
+<textarea  id="coboldb2cicstextarea" rows="22" cols="50">
+//MATERFY JOB NOTIFY=&SYSUID
+//*
+//STEP1 EXEC PGM=IEBCOPY
+//SYSPRINT DD SYSOUT=*
+//INDD1  DD DSN=ARPITK.TEST.PDS.IN,DISP=SHR
+//SYSIN DD *
+    COPY OUTDD=INDD1,INDD=INDD1
+/*
+//
+</textarea>
+</form>
+   
+</body>
+</html>

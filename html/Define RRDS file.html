@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Define RRDS file</title>
+  <meta name="description" content="Define RRDS file" />
+  <meta name="revised" content="08/07/2022" />
+  <meta name="author" content = "Arpit Khandelwal" />
+  <meta http-equiv = "Content-Type" content = "text/html; charset = UTF-8" />
+  <meta http-equiv = "Content-Script-Type" content = "text/JavaScript" />
+  <link rel = "stylesheet" type = "text/css" href = "../css/index.css">
+  <script type = "text/javascript" src = "../javascript/index.js"/></script>
+  <noscript>
+    JavaScript is disabled. Please enabled it.
+  </noscript>
+</head>
+    <body>
+
+<table>
+    <tr>
+        
+        <td><span style="font-size:20px; color:rgb(30, 156, 235)">Define RRDS file</span></td>
+    </tr>
+</table>
+<form>
+<textarea  id="coboldb2cicstextarea" rows="22" cols="50">
+//MATERFA JOB (529),'ASSEMBLE MAP',CLASS=A,MSGCLASS=A,
+//       MSGLEVEL=(1,1),NOTIFY=&SYSUID
+//* CREATE ESDS FILE
+//STEP1 EXEC PGM=IDCAMS
+//SYSPRINT DD SYSOUT=*
+//SYSIN    DD *
+       DEFINE CLUSTER (NAME(MATERF.JCICS.VSAM.ARPIT.RRDS)  -
+       NUMBERED -
+       VOLUMES(STRVL2) -
+       RECSZ(80,80) -
+       TRACKS(10,10)-
+       CONTROLINTERVALSIZE(4096) -
+       FREESPACE(3,3))
+/*
+</textarea>
+</form>
+   
+</body>
+</html>

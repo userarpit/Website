@@ -1,0 +1,221 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>HTML Forms</title>
+  <meta charset="UTF-8">
+  <title>HTML testing</title>
+  <meta name="description" content="hello world program" />
+  <meta name="revised" content="08/07/2022" />
+  <meta http-equiv = "refresh" content = "1000;url = https://bingsport.com/" />
+  <meta http-equiv = "cookie" content = "userid = userarpit; expires = Sunday, 08-Aug-22 03:20:00 GMT;" />
+  <meta name="author" content = "Arpit Khandelwal" />
+  <meta http-equiv = "Content-Type" content = "text/html; charset = UTF-8" />
+  <meta http-equiv = "Content-Script-Type" content = "text/JavaScript" />
+  <link rel = "stylesheet" type = "text/css" href = "../css/hello.css" media="screen">
+
+  <script type = "text/javascript" src = "../javascript/script.js"/></script>
+  <noscript>
+    JavaScript is disabled. Please enabled it.
+  </noscript>
+</head>
+<body onafterprint = "afterprint()" onbeforeprint="beforeprint()">
+
+
+<h1> Heading Example</h1>
+  <form name="myform" oninput = "sumresult.value = parseInt(z1.value)+parseInt(z2.value)+parseInt(z3.value)" onreset="reset1()" onsubmit="validate()">
+    <fieldset>
+      <legend class = "red thick">Login</legend>
+      <table class="one" bgcolor="#ffa500" border = "4" width = "20%">
+        <caption class="place">Input form</caption>
+        <tr>
+          <td>User id</td>
+          <td><input type="text" name="user_id" required value="Default" size="9" maxlength="9" oninvalid="invalid()"></td>
+        </tr>
+        <tr>
+          <td>Password</td>
+          <td><input type="password" name="password" size="16" maxlength="16" ></td>
+
+        </tr>
+        <tr>
+          <td><input type = "submit" accesskey = "l" name = "login" value = "Login" /></td>
+          <td><input type = "reset" name = "reset"  value = "Reset" /></td>
+        </tr>
+        </tr>
+      </table>
+    </fieldset>
+    <br />
+    <keygen name = "random_key" challenge = "0987654321" autofocus>
+    <input type = "hidden" name = "pagenumber" value = "10" />
+    Reason : <br />
+    <textarea rows = "5" cols = "20" name = "reason">Enter reason here...</textarea> <br/>
+      Darkness Level:
+      <input type="range"
+             name="darkness"
+             value="0" min="0" max="255" />
+      <output onforminput="this.value = darkness.value">0</output> / 255
+    <input type = "radio" name = "Subject" value = "English" checked> English
+    <input type = "radio" name = "Subject" value = "Maths"> Maths
+    <input type = "radio" name = "Subject" value = "Physics"> Physics
+    <br />
+    <br />
+    <select name = "dropdown1" multiple size="2">
+      <option value = "English" selected>English</option>
+      <option value = "Maths" >Maths</option>
+      <option value = "Physics">Physics</option>
+    </select> <br /><br />
+    <select name = "dropdown2" >
+      <option value = "English" selected>English</option>
+      <option value = "Maths" >Maths</option>
+      <option value = "Physics">Physics</option>
+    </select><br /><br />
+    <input type = "file" name = "fileupload" accept = "image/*" />
+    <br /><br /><br /><br />
+    <input type = "button" name = "ok" value = "OK" onclick="Hello();"/>
+    <input type = "image" name = "imagebutton" style ="filter: drop-shadow(0 0 0.95rem blue); mix-blend-mode: luminosity;" src = "../images/sm.png" />&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+  <input type="range" name="z1" value="0" /> <br />
+      <input type = "number" name = "z2" value = "20" />
+      <input type = "number" name = "z3" value = "40" />
+      The output is: <output name = "sumresult"></output>
+      <input type="button" name="Print" value="Print" onclick="printdoc();" />
+  </form>
+
+  <video width = "50%" height = "400" controls autoplay muted title="Gali Gali teri" onvolumechange="volumechange()" contextmenu onseeked="onseek()" onended="empty()">
+    <source src = "../video/bahubali.mp4" type = "video/mp4">
+    <track kind="subtitles" srclang="en" src="../vtt/a.vtt" label="English Subtitles" default/>
+    This browser doesn't support video tag.
+  </video>
+  <br /><br />
+
+  <br />
+  <marquee width="50%" direction="right" scrolldelay="10" behavior="alternate">Marquee example</marquee>
+  <br/>
+  <audio controls>
+    <source src = "../audio/shershah.mp3" type = "audio/mpeg">
+
+  </audio>
+
+<div id="a"> Arpit Khandelwal 254 Alok Nagar Kanadia Road</div>
+<br /><br /><br />
+<p style = "text-decoration:underline;">
+  This will be underlined
+</p>
+
+<p style = "text-decoration:line-through;">
+  This will be striked through.
+</p>
+
+<p style = "text-decoration:overline underline;">
+  This will have a under and over line.
+</p>
+<span>
+<p style = "text-decoration:blink;">
+  This text will have blinking effect
+</p>
+
+
+</span>
+
+<br /><br /><br />
+<a href = "https://www.appdynamics.com/topics/database-management-systems#:~:text=Optimizing%20database%20performance-,What%20is%20DBMS%3F,delete%20data%20in%20the%20database.">DBMS</a>
+<p style = "border-width:4px; border-style:none;">
+  This is a border with none width.
+</p>
+
+<p style = "border-width:10px; border-style:solid;">
+  This is a solid border.
+</p>
+
+<p style = "border-width:4px; border-style:dotted;">
+  This is a dotted border.
+</p>
+
+<p style = "border-width:4px; border-style:dashed;">
+  This is a dashed border.
+</p>
+
+<p style = "border-width:4px; border-style:double;">
+  This is a double border.
+</p>
+
+<p style = "border-width:4px; border-style:groove;">
+  This is a groove border.
+</p>
+
+<p style = "border-width:4px; border-style:ridge">
+  This is a ridge  border.
+</p>
+
+<p style = "border-width:4px; border-style:inset;">
+  This is a inset border.
+</p>
+
+<p style = "border-width:4px; border-style:outset;">
+  This is a outset border.
+</p>
+
+<p style = "border-width:4px; border-style:hidden;">
+  This is a hidden border.
+</p>
+
+<p style = "border-width:4px;
+         border-top-style:solid;
+         border-bottom-style:dashed;
+         border-left-style:groove;
+         border-right-style:double;">
+  This is a a border with four different styles.
+</p>
+<object data = "../pdf/I-9.pdf" type = "application/pdf" width = "600" height = "200" onmouseover="i9pdf('Arpit',10);"></object>
+<ul>
+  <li>Beetroot</li>
+  <li>Ginger</li>
+</ul>
+<ul>
+  <li>Beetroot1</li>
+  <li>Ginger1</li>
+</ul>
+
+<ol style = "list-style: outside upper-alpha; marker-offset:auto;">
+  <li>Maths</li>
+  <li>Social Science</li>
+  <li>Physics</li>
+</ol>
+<div style = "cursor:auto">Auto</div>
+<div style = "cursor:crosshair">Crosshair</div>
+<div style = "cursor:url('../images/SM.png'),auto;">Image</div>
+
+<div style = "cursor:pointer">Pointer</div>
+<div style = "cursor:move">Move</div>
+<div style = "cursor:e-resize">e-resize</div>
+<div style = "cursor:ne-resize">ne-resize</div>
+<div style = "cursor:nw-resize">nw-resize</div>
+
+<div style = "cursor:n-resize">n-resize</div>
+<div style = "cursor:se-resize">se-resize</div>
+<div style = "cursor:sw-resize">sw-resize</div>
+<div style = "cursor:s-resize">s-resize</div>
+<div style = "cursor:w-resize">w-resize</div>
+
+<div style = "cursor:text;">text</div>
+<div style = "cursor:wait">wait</div>
+<div style = "cursor:help">help</div>
+
+<p class="outlinetest1">
+  outline test kjasljasldkjlkjadlkj </br>
+lakdlknelkn</p>
+<div class="outlinetest">
+  <p>This paragraph is 400pixels wide and 100 pixels high and here line height is 30pixels.</p>
+  <p>This paragraph is 400 pixels wide and 100 pixels high and here line height is 30pixels.</p>
+</div>
+<br /><br /><br /><br /><br />
+
+<div style = "filter: wave(add=false, freq=3, strength=5, lightstrength=30, phase=50);">CSS Tutorials</div>
+<span style="FILTER: Wave(Add=1, Freq=2, LightStrength=30, Phase=20, Strength=7); width:200px;font-size:20pt;">Wave Effect</span>
+<span style="FILTER: Xray; width:200px;font-size:20pt;">X-Ray Filter</span><br />
+<span style="FILTER: blur(5); width:200px;font-size:20pt;">Glow Filter</span>
+<div class="box1">Arpit Khandelwal</div>
+</body>
+</html>

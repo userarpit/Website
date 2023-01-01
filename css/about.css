@@ -1,0 +1,86 @@
+td {
+    border: 0px solid;
+    vertical-align: top;
+    text-align: left;
+}
+
+a {
+    text-decoration: none;
+}
+
+.headingtable {
+    border: 0px solid black;
+    font-size: 10px; 
+    font-family: Verdana, Geneva, Tahoma, sans-serif;    
+    width: 21%; 
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-left: 5%;
+    margin-top: 50px;
+}
+
+.contenttable {
+    font-size: 15px;   
+    font-family: Verdana, Geneva, Tahoma, sans-serif; 
+    width: 85%; 
+    height:50%;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-left: 5%;
+    margin-top: 125px;
+}
+.contenttd {
+    width: 50%;
+    border: 0px solid;
+}
+
+.demographictable {
+    height: 100%;
+    border: 0px solid;
+}
+
+.learninginprogresssheading {
+    border: 0px solid;
+    font-size: 22px;    
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-top: 11%;
+    color:rgb(30, 156, 235);
+    vertical-align: top;  
+}
+
+.learninginprogresscontent {
+    border: 0px solid;
+    font-size: 14px;  
+    font-family: Verdana, Geneva, Tahoma, sans-serif;   
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-top: 17%;
+    width: 40%;
+    color:rgb(30, 156, 235);
+    vertical-align: top;      
+}
+
+.formatlearninginprogress {
+    background-color: rgb(30, 156, 235);
+    color:white;   
+    vertical-align: middle;
+    border: 1px solid lightslategrey;
+    border-radius: 5%;
+    display: inline-block;
+    margin-right: 0.75em;
+    margin-bottom: 0.75em;
+    padding: 1%;
+}

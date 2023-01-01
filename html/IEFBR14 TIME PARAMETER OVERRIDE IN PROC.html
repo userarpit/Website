@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>IEFBR14 TIME PARAMETER OVERRIDE IN PROC</title>
+  <meta name="description" content="IEFBR14 TIME PARAMETER OVERRIDE IN PROC" />
+  <meta name="revised" content="08/07/2022" />
+  <meta name="author" content = "Arpit Khandelwal" />
+  <meta http-equiv = "Content-Type" content = "text/html; charset = UTF-8" />
+  <meta http-equiv = "Content-Script-Type" content = "text/JavaScript" />
+  <link rel = "stylesheet" type = "text/css" href = "../css/index.css">
+  <script type = "text/javascript" src = "../javascript/index.js"/></script>
+  <noscript>
+    JavaScript is disabled. Please enabled it.
+  </noscript>
+</head>
+    <body>
+
+<table>
+  <tr>
+    
+    <td><span style="font-size:20px; color:rgb(30, 156, 235)">IEFBR14 TIME PARAMETER OVERRIDE IN PROC</span></td>
+  </tr>
+</table>
+<form>
+<textarea  id="coboldb2cicstextarea" rows="22" cols="50">
+//MATERFP JOB NOTIFY=&SYSUID
+//*
+//PROC1   PROC
+//PSTEP1  EXEC PGM=IEFBR14,TIME=(2,0)
+//DD1     DD DSN=ARPIT.SEQ.NEW,DISP=SHR
+//        PEND
+//STEP1   EXEC PROC1,TIME.PSTEP1=(1,0),REGION=0M
+//PSTEP1.DD1 DD DUMMY
+//
+</textarea>
+</form>
+   
+</body>
+</html>

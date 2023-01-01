@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ED</title>
+  <meta name="description" content="ED" />
+  <meta name="revised" content="08/07/2022" />
+  <meta name="author" content = "Arpit Khandelwal" />
+  <meta http-equiv = "Content-Type" content = "text/html; charset = UTF-8" />
+  <meta http-equiv = "Content-Script-Type" content = "text/JavaScript" />
+  <link rel = "stylesheet" type = "text/css" href = "../css/index.css">
+  <script type = "text/javascript" src = "../javascript/index.js"/></script>
+  <noscript>
+    JavaScript is disabled. Please enabled it.
+  </noscript>
+</head>
+    <body>
+
+<table>
+  <tr>
+    
+    <td><span style="font-size:20px; color:rgb(30, 156, 235)">ED</span></td>
+  </tr>
+</table>
+<form>
+<textarea  id="coboldb2cicstextarea" rows="22" cols="50">
+/*REXX*/
+ADDRESS ISREDIT
+"MACRO"
+"(LDATA) = LINE .ZCSR"
+SELECT
+   WHEN POS('DSNAME=',LDATA) > 0 THEN
+     DO
+       PARSE VAR LDATA B1 'DSNAME=' DNAME ','
+     END
+   WHEN POS('DSN=',LDATA) > 0 THEN
+     DO
+       PARSE VAR LDATA B1 'DSN=' DNAME ','
+     END
+   OTHERWISE
+     DO
+       SAY 'DSN= OR DSNAME= NOT FOUND'
+       EXIT
+     END
+END
+DNAME=STRIP(DNAME,'B')
+ADDRESS ISPEXEC "EDIT DATASET('"DNAME"')"
+EXIT
+</textarea>
+</form>
+   
+</body>
+</html>

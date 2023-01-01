@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>IEBCOPY SELECT</title>
+  <meta name="description" content="IEBCOPY SELECT" />
+  <meta name="revised" content="08/07/2022" />
+  <meta name="author" content = "Arpit Khandelwal" />
+  <meta http-equiv = "Content-Type" content = "text/html; charset = UTF-8" />
+  <meta http-equiv = "Content-Script-Type" content = "text/JavaScript" />
+  <link rel = "stylesheet" type = "text/css" href = "../css/index.css">
+  <script type = "text/javascript" src = "../javascript/index.js"/></script>
+  <noscript>
+    JavaScript is disabled. Please enabled it.
+  </noscript>
+</head>
+    <body>
+
+<table>
+  <tr>
+    
+    <td><span style="font-size:20px; color:rgb(30, 156, 235)">IEBCOPY SELECT</span></td>
+  </tr>
+</table>
+<form>
+<textarea  id="coboldb2cicstextarea" rows="22" cols="50">
+//MATERFY JOB NOTIFY=&SYSUID
+//*
+//STEP1 EXEC PGM=IEBCOPY
+//SYSPRINT DD SYSOUT=*
+//IN1    DD DSN=ARPITK.TEST.GENER,DISP=SHR
+//IN2   DD DSN=ARPITK.TEST.GENER1,DISP=SHR
+//OUT1   DD DSN=ARPITK.TEST.COPY,DISP=SHR
+//SYSIN  DD *
+    COPY INDD=SYSUT1,
+            OUTDD=SYSUT2
+    SELECT MEMBER=(A,
+               B)
+/*
+//
+</textarea>
+</form>
+   
+</body>
+</html>

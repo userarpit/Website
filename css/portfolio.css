@@ -1,0 +1,52 @@
+td {
+  padding-right: 20px;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:link{
+  color:lightslategrey;
+}
+
+a:visited{
+  color:lightslategrey;
+}
+
+a:hover{
+  color:blue;
+}
+
+a:focus{
+  color: rgb(30, 156, 235);
+}
+
+a:active{
+  color:lightslategrey;
+}
+
+.headingtable {
+    border: 0px solid black;
+    font-size: 10px;    
+    font-family: Verdana, Geneva, Tahoma, sans-serif; 
+    width: 20%; 
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-left: 5%;
+    margin-top: 50px;    
+}
+
+.contenttable {
+    border: 0px solid;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;    
+    margin-left: 5%;
+    margin-top: 125px;
+}

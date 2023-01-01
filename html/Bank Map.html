@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bank Map</title>
+  <meta name="description" content="Bank Map" />
+  <meta name="revised" content="08/07/2022" />
+  <meta name="author" content = "Arpit Khandelwal" />
+  <meta http-equiv = "Content-Type" content = "text/html; charset = UTF-8" />
+  <meta http-equiv = "Content-Script-Type" content = "text/JavaScript" />
+  <link rel = "stylesheet" type = "text/css" href = "../css/index.css">
+  <script type = "text/javascript" src = "../javascript/index.js"/></script>
+  <noscript>
+    JavaScript is disabled. Please enabled it.
+  </noscript>
+</head>
+    <body>
+
+<table>
+    <tr>
+        
+        <td><span style="font-size:20px; color:rgb(30, 156, 235)">Bank Map</span></td>
+    </tr>
+</table>
+<form>
+<textarea  id="coboldb2cicstextarea" rows="22" cols="50">
+ARPIBNK  DFHMSD TYPE=&SYSPARM,MODE=INOUT,TIOAPFX=YES,STORAGE=AUTO,     X
+               CTRL=(FREEKB,FRSET),LANG=COBOL,                         X
+               DSATTS=(COLOR,HILIGHT),                                 X
+               MAPATTS=(COLOR,HILIGHT)
+ARPIBNM  DFHMDI SIZE=(24,80),LINE=1,COLUMN=1
+
+         DFHMDF POS=(2,30),LENGTH=10,ATTRB=ASKIP,                      X
+               INITIAL='ARPIT BANK',COLOR=BLUE
+         DFHMDF POS=(3,55),LENGTH=5,ATTRB=ASKIP,                       X
+               INITIAL='DATE:',COLOR=BLUE
+DT       DFHMDF POS=(3,61),LENGTH=10,ATTRB=PROT,                       X
+               INITIAL='__/__/____',COLOR=BLUE
+         DFHMDF POS=(4,55),LENGTH=5,ATTRB=ASKIP,                       X
+               INITIAL='TIME:',COLOR=BLUE
+TM       DFHMDF POS=(4,61),LENGTH=08,ATTRB=PROT,                       X
+               INITIAL='--:--:--',COLOR=BLUE
+
+         DFHMDF POS=(5,15),LENGTH=4,ATTRB=(ASKIP,NORM),                X
+               INITIAL='CNO:'
+CNO      DFHMDF POS=(5,20),LENGTH=5,ATTRB=(UNPROT,IC,FSET,NUM),        X
+               INITIAL='_____',PICIN='9(5)',PICOUT='9(5)'
+         DFHMDF POS=(5,26),LENGTH=1,ATTRB=ASKIP
+
+         DFHMDF POS=(6,15),LENGTH=6,ATTRB=(ASKIP),                     X
+               INITIAL='CNAME:'
+CNAME    DFHMDF POS=(6,22),LENGTH=20,ATTRB=(UNPROT,FSET),              X
+               INITIAL='____________________',COLOR=BLUE
+         DFHMDF POS=(6,43),LENGTH=1,ATTRB=ASKIP
+         DFHMDF POS=(7,15),LENGTH=5,ATTRB=(ASKIP,BRT),                 X
+               INITIAL='CADD:'
+CADD     DFHMDF POS=(7,21),LENGTH=25,ATTRB=(UNPROT,FSET),              X
+               INITIAL='_________________________',COLOR=BLUE
+         DFHMDF POS=(7,47),LENGTH=1,ATTRB=ASKIP
+
+         DFHMDF POS=(8,15),LENGTH=5,ATTRB=ASKIP,                       X
+               INITIAL='CBAL:',COLOR=BLUE
+CBAL     DFHMDF POS=(8,21),LENGTH=5,ATTRB=(UNPROT,FSET),               X
+               INITIAL='_____',COLOR=BLUE,PICIN='9(5)',PICOUT='9(5)'
+         DFHMDF POS=(8,27),LENGTH=1,ATTRB=ASKIP
+         DFHMDF POS=(10,15),LENGTH=4,ATTRB=ASKIP,                      X
+               INITIAL='MSG:',COLOR=BLUE
+MSG      DFHMDF POS=(10,20),LENGTH=20,ATTRB=PROT,                      X
+               COLOR=RED,HILIGHT=UNDERLINE
+         DFHMDF POS=(10,41),LENGTH=1,ATTRB=ASKIP
+
+         DFHMDF POS=(11,15),LENGTH=42,ATTRB=ASKIP,                     X
+               INITIAL='F1:ADD F2:SEL F3:UPD F4:DEL F5:REF F6:QUIT',   X
+               COLOR=BLUE
+         DFHMSD TYPE=FINAL
+                END
+  </textarea>
+</form>
+   
+</body>
+</html>

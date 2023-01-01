@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cursor with update scroll</title>
+  <meta name="description" content="Cursor with update scroll" />
+  <meta name="revised" content="08/07/2022" />
+  <meta name="author" content = "Arpit Khandelwal" />
+  <meta http-equiv = "Content-Type" content = "text/html; charset = UTF-8" />
+  <meta http-equiv = "Content-Script-Type" content = "text/JavaScript" />
+  <link rel = "stylesheet" type = "text/css" href = "../css/index.css">
+  <script type = "text/javascript" src = "../javascript/index.js"/></script>
+  <noscript>
+    JavaScript is disabled. Please enabled it.
+  </noscript>
+</head>
+    <body>
+
+<table>
+    <tr>
+        
+        <td><span style="font-size:20px; color:rgb(30, 156, 235)">Cursor with update scroll</span></td>
+    </tr>
+</table>
+<form>
+<textarea  id="coboldb2cicstextarea" rows="22" cols="50">
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. UPDCURS.
+       DATA DIVISION.
+       WORKING-STORAGE SECTION.
+           EXEC SQL INCLUDE SQLCA END-EXEC.
+           EXEC SQL INCLUDE CUST END-EXEC.
+       77 WS-CNAME-NULL     PIC S9(4) COMP.
+       77 WS-SQLCODE        PIC S9(9) SIGN IS LEADING SEPARATE.
+       01 WS-CREC.
+           05 WS-CNO        PIC X(5).
+           05 WS-CNAME      PIC X(20).
+           05 WS-CADD       PIC X(20).
+           05 WS-CBAL       PIC 9(8).
+           05 WS-CDOB       PIC X(10).
+           EXEC SQL
+               DECLARE CUST_CUR SCROLL CURSOR WITH HOLD
+               FOR
+               SELECT * FROM CUST_ARPIT
+               WHERE CADD = 'INDIA'
+               FOR UPDATE OF CNAME,CBAL
+           END-EXEC.
+       PROCEDURE DIVISION.
+           PERFORM 1000-OPEN-CURSOR.
+           PERFORM 2000-FETCH-CURSOR UNTIL SQLCODE = +100.
+           PERFORM 3000-CLOSE-CURSOR.
+           STOP RUN.
+       1000-OPEN-CURSOR.
+           MOVE 'INDIA' TO HV-CADD-TEXT.
+           MOVE LENGTH OF HV-CADD-TEXT TO HV-CADD-LEN.
+           EXEC SQL OPEN CUST_CUR USING :HV-CADD END-EXEC.
+           MOVE SQLCODE TO WS-SQLCODE.
+           DISPLAY WS-SQLCODE.
+       2000-FETCH-CURSOR.
+           EXEC SQL
+               FETCH RELATIVE +1 FROM CUST_CUR INTO
+               :HV-CNO,
+               :HV-CNAME :WS-CNAME-NULL,
+               :HV-CADD,
+               :HV-CBAL,
+               :HV-CDOB
+           END-EXEC.
+           MOVE SQLCODE TO WS-SQLCODE.
+           IF SQLCODE NOT EQUAL +100
+                   DISPLAY HV-CNO
+                   IF WS-CNAME-NULL       = -1
+                       DISPLAY 'NAME IS UNKNOWN'
+                       PERFORM 2100-UPDATE-CNAME
+                   ELSE
+                       DISPLAY HV-CNAME
+                   END-IF
+                   DISPLAY HV-CADD
+                   DISPLAY HV-CBAL
+                   DISPLAY HV-CDOB
+                   DISPLAY '************************'
+           END-IF.
+       2100-UPDATE-CNAME.
+           MOVE 'ADITYA' TO HV-CNAME.
+           EXEC SQL
+               UPDATE CUST_ARPIT SET CNAME = :HV-CNAME
+               WHERE CURRENT OF CUST_CUR
+           END-EXEC.
+       3000-CLOSE-CURSOR.
+          EXEC SQL CLOSE CUST_CUR END-EXEC.
+</textarea>
+</form>
+   
+</body>
+</html>

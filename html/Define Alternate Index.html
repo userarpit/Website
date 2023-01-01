@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Define Alternate Index</title>
+  <meta name="description" content="Define Alternate Index" />
+  <meta name="revised" content="08/07/2022" />
+  <meta name="author" content = "Arpit Khandelwal" />
+  <meta http-equiv = "Content-Type" content = "text/html; charset = UTF-8" />
+  <meta http-equiv = "Content-Script-Type" content = "text/JavaScript" />
+  <link rel = "stylesheet" type = "text/css" href = "../css/index.css">
+  <script type = "text/javascript" src = "../javascript/index.js"/></script>
+  <noscript>
+    JavaScript is disabled. Please enabled it.
+  </noscript>
+</head>
+    <body>
+
+<table>
+    <tr>
+        
+        <td><span style="font-size:20px; color:rgb(30, 156, 235)">Define Alternate Index</span></td>
+    </tr>
+</table>
+<form>
+<textarea  id="coboldb2cicstextarea" rows="22" cols="50">
+//MATERFA JOB NOTIFY=&SYSUID,MSGLEVEL=(1,1)
+//*
+//STEP1 EXEC PGM=IDCAMS
+//SYSPRINT DD SYSOUT=*
+//SYSIN DD *
+ DEFINE AIX (NAME(MATERF.JCICS.VSAM.ARPIT.ESDS1.AIX) -
+        RELATE(MATERF.JCICS.VSAM.ARPIT.ESDS1) -
+        RECORDSIZE(80 80) -
+        CISZ(512) -
+        KEYS(5 0)  -
+        UPGRADE -
+        VOLUME(STRVL2) -
+        TRACKS(5 5) -
+        NONUNIQUEKEY)
+/*
+//
+</textarea>
+</form>
+   
+</body>
+</html>

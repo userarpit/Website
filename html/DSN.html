@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DSN</title>
+  <meta name="description" content="DSN" />
+  <meta name="revised" content="08/07/2022" />
+  <meta name="author" content = "Arpit Khandelwal" />
+  <meta http-equiv = "Content-Type" content = "text/html; charset = UTF-8" />
+  <meta http-equiv = "Content-Script-Type" content = "text/JavaScript" />
+  <link rel = "stylesheet" type = "text/css" href = "../css/index.css">
+  <script type = "text/javascript" src = "../javascript/index.js"/></script>
+  <noscript>
+    JavaScript is disabled. Please enabled it.
+  </noscript>
+</head>
+    <body>
+
+<table>
+  <tr>
+    
+    <td><span style="font-size:20px; color:rgb(30, 156, 235)">DSN</span></td>
+  </tr>
+</table>
+<form>
+<textarea  id="coboldb2cicstextarea" rows="22" cols="50">
+/*REXX*/
+"ISREMSPY"
+ADDRESS ISPEXEC CONTROL ERRORS RETURN
+ADDRESS ISREDIT
+"MACRO"
+"(DATASET) = DATASET"
+"(MEM) = MEMBER"
+SAY DATASET
+SAY MEM
+EXIT
+</textarea>
+</form>
+   
+</body>
+</html>

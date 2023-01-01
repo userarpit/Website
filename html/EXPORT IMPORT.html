@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>EXPORT IMPORT</title>
+  <meta name="description" content="EXPORT IMPORT" />
+  <meta name="revised" content="08/07/2022" />
+  <meta name="author" content = "Arpit Khandelwal" />
+  <meta http-equiv = "Content-Type" content = "text/html; charset = UTF-8" />
+  <meta http-equiv = "Content-Script-Type" content = "text/JavaScript" />
+  <link rel = "stylesheet" type = "text/css" href = "../css/index.css">
+  <script type = "text/javascript" src = "../javascript/index.js"/></script>
+  <noscript>
+    JavaScript is disabled. Please enabled it.
+  </noscript>
+</head>
+    <body>
+
+<table>
+  <tr>
+    
+    <td><span style="font-size:20px; color:rgb(30, 156, 235)">EXPORT IMPORT</span></td>
+  </tr>
+</table>
+<form>
+<textarea  id="coboldb2cicstextarea" rows="22" cols="50">
+//MATERFA JOB NOTIFY=&SYSUID
+//STEP1 EXEC PGM=IDCAMS
+//SYSPRINT DD SYSOUT=*
+//SEQ1 DD DSN=ARPIT.KSDS.BACKUP,DISP=SHR
+//SYSIN DD *
+   EXPORT MATERF.JCICS.VSAM.ARPIT.KSDS.DUP -
+   OUTFILE(SEQ1) -
+   PERM
+/*
+//STEP2 EXEC PGM=IDCAMS
+//SYSPRINT DD SYSOUT=*
+//SEQ1 DD DSN=ARPIT.KSDS.BACKUP,DISP=SHR
+//SYSIN DD *
+    IMPORT INFILE(SEQ1) OUTDATASET(MATERF.JCICS.VSAM.ARPIT.KSDS.DUP)
+/*
+</textarea>
+</form>
+   
+</body>
+</html>
