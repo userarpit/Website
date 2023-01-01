@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Numeric Edit</title>
+  <meta name="description" content="Numeric Edit" />
+  <meta name="revised" content="08/07/2022" />
+  <meta name="author" content = "Arpit Khandelwal" />
+  <meta http-equiv = "Content-Type" content = "text/html; charset = UTF-8" />
+  <meta http-equiv = "Content-Script-Type" content = "text/JavaScript" />
+  <link rel = "stylesheet" type = "text/css" href = "../css/index.css">
+  <script type = "text/javascript" src = "../javascript/index.js"/></script>
+  <noscript>
+    JavaScript is disabled. Please enabled it.
+  </noscript>
+</head>
+    <body>
+
+<table>
+    <tr>
+        
+        <td><span style="font-size:20px; color:rgb(30, 156, 235)">Numeric Edit</span></td>
+    </tr>
+</table>
+<form>
+<textarea  id="coboldb2cicstextarea" rows="22" cols="50">
+       ID DIVISION.
+       PROGRAM-ID. EDITED.
+       DATA DIVISION.
+       WORKING-STORAGE SECTION.
+       77 ZNUM         PIC ZZ9 VALUE IS ZERO.
+       77 ASTNUM   PIC **9 VALUE IS ZERO.
+       77 DOLNUM   PIC $99 VALUE IS ZERO.
+       77 MINNUM   PIC -99 VALUE IS ZERO.
+       77 PLUSNUM  PIC +99 VALUE IS ZERO.
+       77 COMMANUM PIC 9,9 VALUE IS ZERO.
+       77 BLANKNUM PIC 9B9 VALUE IS ZERO.
+       77 ZRNUM    PIC 990 VALUE IS ZERO.
+       77 SLASHNUM PIC 9/9 VALUE IS ZERO.
+       77 BWZNUM   PIC 999 BLANK WHEN ZERO.
+       77 NUMCR    PIC ZZZCR.
+       77 NUMDB    PIC ZZZDB.
+       77 DFLOAT   PIC $$,$$9.99.
+       77 PFLOAT   PIC ++++9.
+       PROCEDURE DIVISION.
+           MOVE 33 TO ZNUM.
+           DISPLAY 'ZERO SUPPRESED ' ZNUM.
+           MOVE 33 TO ASTNUM.
+           DISPLAY 'ASTRISK IN PLACE OF ZERO ' ASTNUM.
+           MOVE 33 TO DOLNUM.
+           DISPLAY 'DOLLAR PRECEDING THE NUMERIC ' DOLNUM.
+           MOVE -33 TO MINNUM.
+           DISPLAY 'MINUS SIGN PRECEDING THE NUMERIC' MINNUM.
+           MOVE 33 TO MINNUM.
+           DISPLAY 'MINUS SIGN PRECEDING THE NUMERIC' MINNUM.
+           MOVE +33 TO PLUSNUM.
+           DISPLAY 'PLUS SIGN PRECEDING THE NUMERIC' PLUSNUM.
+           MOVE -33 TO PLUSNUM.
+           DISPLAY 'PLUS SIGN PRECEDING THE NUMERIC' PLUSNUM.
+           MOVE 33 TO COMMANUM.
+           DISPLAY 'COMMA SIGN IN THE NUMERIC' COMMANUM.
+           MOVE 33 TO BLANKNUM.
+           DISPLAY 'BLANK IS INSERTED IN THE NUMERIC' BLANKNUM.
+           MOVE 33 TO ZRNUM.
+           DISPLAY 'ZERO IS INSERTED IN THE NUMERIC' ZRNUM.
+           MOVE 33 TO SLASHNUM.
+           DISPLAY 'SLASH IS INSERTED IN THE NUMERIC' SLASHNUM.
+           MOVE 000 TO BWZNUM.
+           DISPLAY 'BLANK INSERTED WHEN ZERO THE NUMERIC' BWZNUM.
+           MOVE +33 TO NUMCR.
+           DISPLAY 'POSITIVE CR' NUMCR.
+           MOVE -33 TO NUMCR.
+           DISPLAY 'NEGATIVE CR' NUMCR.
+           MOVE +33 TO NUMDB.
+           DISPLAY 'POSITIVE DB' NUMDB.
+           MOVE -33 TO NUMDB.
+           DISPLAY 'POSITIVE DB' NUMDB.
+           MOVE 1234.56 TO DFLOAT.
+           DISPLAY 'DOLLAR FLOAT' DFLOAT.
+           MOVE 71234.56 TO DFLOAT.
+           DISPLAY 'DOLLAR FLOAT' DFLOAT.
+           MOVE 0.56     TO DFLOAT.
+           DISPLAY 'DOLLAR FLOAT' DFLOAT.
+           MOVE 12.34    TO DFLOAT.
+           DISPLAY 'DOLLAR FLOAT' DFLOAT.
+           MOVE +0080    TO PFLOAT.
+           DISPLAY 'PLUS   FLOAT' PFLOAT.
+           STOP RUN.
+</textarea>
+</form>
+   
+</body>
+</html>

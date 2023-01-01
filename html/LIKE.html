@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>LIKE</title>
+  <meta name="description" content="LIKE" />
+  <meta name="revised" content="08/07/2022" />
+  <meta name="author" content = "Arpit Khandelwal" />
+  <meta http-equiv = "Content-Type" content = "text/html; charset = UTF-8" />
+  <meta http-equiv = "Content-Script-Type" content = "text/JavaScript" />
+  <link rel = "stylesheet" type = "text/css" href = "../css/index.css">
+  <script type = "text/javascript" src = "../javascript/index.js"/></script>
+  <noscript>
+    JavaScript is disabled. Please enabled it.
+  </noscript>
+</head>
+    <body>
+
+<table>
+  <tr>
+    
+    <td><span style="font-size:20px; color:rgb(30, 156, 235)">LIKE</span></td>
+  </tr>
+</table>
+<form>
+<textarea  id="coboldb2cicstextarea" rows="22" cols="50">
+SELECT * FROM DBO.EMPLOYEE WHERE LAST_NAME LIKE 'S%';
+
+SELECT TOP (1000) [ID]
+      ,[NAME]
+      ,[AGE]
+      ,[SALARY]
+  FROM [STUDENTS].[DBO].[STUDENTS] WHERE NAME LIKE '_A%';
+
+UPDATE [STUDENTS].[DBO].[STUDENTS] SET AGE = 55 WHERE NAME LIKE '_A%';
+
+DELETE FROM [STUDENTS].[DBO].[STUDENTS] WHERE NAME LIKE '%M';
+</textarea>
+</form>
+   
+</body>
+</html>

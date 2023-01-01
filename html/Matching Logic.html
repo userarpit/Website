@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Matching Logic</title>
+  <meta name="description" content="Matching Logic" />
+  <meta name="revised" content="08/07/2022" />
+  <meta name="author" content = "Arpit Khandelwal" />
+  <meta http-equiv = "Content-Type" content = "text/html; charset = UTF-8" />
+  <meta http-equiv = "Content-Script-Type" content = "text/JavaScript" />
+  <link rel = "stylesheet" type = "text/css" href = "../css/index.css">
+  <script type = "text/javascript" src = "../javascript/index.js"/></script>
+  <noscript>
+    JavaScript is disabled. Please enabled it.
+  </noscript>
+</head>
+    <body>
+
+<table>
+    <tr>
+        
+        <td><span style="font-size:20px; color:rgb(30, 156, 235)">Matching Logic</span></td>
+    </tr>
+</table>
+<form>
+<textarea  id="coboldb2cicstextarea" rows="22" cols="50">
+       ID DIVISION.
+       PROGRAM-ID. MATCH.
+       ENVIRONMENT DIVISION.
+       INPUT-OUTPUT SECTION.
+       FILE-CONTROL.
+           SELECT FILEA ASSIGN TO DD1
+           FILE STATUS IS WS-FS1.
+
+           SELECT FILEB ASSIGN TO DD2
+           FILE STATUS IS WS-FS2.
+
+           SELECT FILEC ASSIGN TO DD3
+           FILE STATUS IS WS-FS3.
+
+           SELECT FILED ASSIGN TO DD4
+           FILE STATUS IS WS-FS4.
+
+           SELECT FILEE ASSIGN TO DD5
+           FILE STATUS IS WS-FS5.
+       DATA DIVISION.
+       FILE SECTION.
+       FD FILEA.
+       01 WS-FILEA-REC    PIC X(10).
+       FD FILEB.
+       01 WS-FILEB-REC    PIC X(10).
+       FD FILEC.
+       01 WS-FILEC-REC    PIC X(10).
+       FD FILED.
+       01 WS-FILED-REC    PIC X(10).
+       FD FILEE.
+       01 WS-FILEE-REC    PIC X(10).
+       WORKING-STORAGE SECTION.
+       01 WS-FS1      PIC 9(2).
+       01 WS-FS2      PIC 9(2).
+       01 WS-FS3      PIC 9(2).
+       01 WS-FS4      PIC 9(2).
+       01 WS-FS5      PIC 9(2).
+       01 WS-END-VAR.
+           05 WS-ENDA PIC X VALUE 'N'.
+           05 WS-ENDB PIC X VALUE 'N'.
+       PROCEDURE DIVISION.
+           PERFORM 1000-OPEN-FILE.
+           PERFORM 2000-MATCH-LOGIC.
+           PERFORM 9000-CLOSE-FILE.
+           STOP RUN.
+       1000-OPEN-FILE.
+           OPEN INPUT FILEA FILEB.
+           IF WS-FS1 NOT EQUAL 0
+               DISPLAY 'ERROR FILEA OPEN'
+           END-IF.
+           IF WS-FS2 NOT EQUAL 0
+               DISPLAY 'ERROR FILEB OPEN'
+           END-IF.
+
+           OPEN OUTPUT FILEC FILED FILEE.
+           IF WS-FS3 NOT EQUAL 0
+               DISPLAY 'ERROR FILEC OPEN'
+           END-IF.
+           IF WS-FS4 NOT EQUAL 0
+               DISPLAY 'ERROR FILED OPEN'
+           END-IF.
+           IF WS-FS5 NOT EQUAL 0
+               DISPLAY 'ERROR FILEE OPEN'
+           END-IF.
+       2000-MATCH-LOGIC.
+           PERFORM 2100-READ-FILEA.
+           PERFORM 2200-READ-FILEB.
+           PERFORM 2300-MATCHING UNTIL WS-ENDA = 'Y' OR WS-ENDB = 'Y'.
+           DISPLAY WS-ENDA.
+           DISPLAY WS-ENDB.
+           IF WS-ENDA = 'Y'
+              PERFORM UNTIL WS-ENDB = 'Y'
+                  MOVE WS-FILEB-REC TO WS-FILEE-REC
+                  WRITE WS-FILEE-REC
+                  PERFORM 2200-READ-FILEB
+              END-PERFORM
+           END-IF.
+           IF WS-ENDB = 'Y'
+              PERFORM UNTIL WS-ENDA = 'Y'
+                  MOVE WS-FILEA-REC TO WS-FILED-REC
+                  WRITE WS-FILED-REC
+                  PERFORM 2100-READ-FILEA
+              END-PERFORM
+           END-IF.
+       2100-READ-FILEA.
+           READ FILEA
+           AT END
+               MOVE 'Y' TO WS-ENDA
+           NOT AT END
+               CONTINUE
+           END-READ.
+       2200-READ-FILEB.
+           READ FILEB
+           AT END
+               MOVE 'Y' TO WS-ENDB
+           NOT AT END
+               CONTINUE
+           END-READ.
+       2300-MATCHING.
+           IF WS-FILEA-REC EQUAL WS-FILEB-REC
+               MOVE WS-FILEA-REC TO WS-FILEC-REC
+               WRITE WS-FILEC-REC
+               PERFORM 2100-READ-FILEA
+               PERFORM 2200-READ-FILEB
+           END-IF.
+           IF WS-FILEA-REC < WS-FILEB-REC
+               MOVE WS-FILEA-REC TO WS-FILED-REC
+               WRITE WS-FILED-REC
+               PERFORM 2100-READ-FILEA
+           END-IF.
+           IF WS-FILEA-REC > WS-FILEB-REC
+               MOVE WS-FILEB-REC TO WS-FILEE-REC
+               WRITE WS-FILEE-REC
+               PERFORM 2200-READ-FILEB
+           END-IF.
+       9000-CLOSE-FILE.
+           CLOSE FILEA FILEB FILEC FILED FILEE.
+</textarea>
+</form>
+   
+</body>
+</html>

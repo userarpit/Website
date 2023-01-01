@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JOIN</title>
+  <meta name="description" content="JOIN" />
+  <meta name="revised" content="08/07/2022" />
+  <meta name="author" content = "Arpit Khandelwal" />
+  <meta http-equiv = "Content-Type" content = "text/html; charset = UTF-8" />
+  <meta http-equiv = "Content-Script-Type" content = "text/JavaScript" />
+  <link rel = "stylesheet" type = "text/css" href = "../css/index.css">
+  <script type = "text/javascript" src = "../javascript/index.js"/></script>
+  <noscript>
+    JavaScript is disabled. Please enabled it.
+  </noscript>
+</head>
+    <body>
+
+<table>
+    <tr>
+        
+        <td><span style="font-size:20px; color:rgb(30, 156, 235)">JOIN</span></td>
+    </tr>
+</table>
+<form>
+<textarea  id="coboldb2cicstextarea" rows="22" cols="50">
+INNER JOIN
+SELECT AT.NAME,S.AGE FROM STUDENTS S
+INNER JOIN ADDRESS_TABLE AT ON S.NAME= AT.NAME;
+
+LEFT OUTER JOIN - MATCHED PLUS ALL UNMATCHED ROWS FROM LEFT TABLE
+SELECT AT.NAME,S.AGE FROM STUDENTS S
+LEFT  JOIN ADDRESS_TABLE AT ON S.NAME= AT.NAME;
+
+RIGHT OUTER JOIN - MATCHED PLUS ALL UNMATCHED ROWS FROM RIGHT TABLE
+SELECT * FROM STUDENTS S
+RIGHT JOIN ADDRESS_TABLE AT ON S.NAME= AT.NAME;
+
+FULL OUTER JOIN - MATCHED PLUS ALL UNMATCHED ROWS FROM LEFT AND RIGHT TABLE
+SELECT * FROM STUDENTS S
+FULL JOIN ADDRESS_TABLE AT ON S.NAME= AT.NAME;
+
+CROSS JOIN - CARTESIAN PRODUCT FROM BOTH TABLE
+SELECT * FROM STUDENTS S,
+ADDRESS_TABLE AT;
+
+SELECT * FROM STUDENTS S INNER JOIN ADDRESS_TABLE AT
+ON S.NAME=AT.ANAME INNER JOIN FACULTY_INFO FI ON
+S.SALARY = FI.FACULTY_SALARY;
+
+SELECT COUNT(*) COUNT ,MAX(SALARY) MAXIMUM ,MIN(SALARY) MINIMUM,
+SUM(SALARY) SUM, AVG(SALARY) AVERAGE FROM STUDENTS;
+
+SELECT UPPER(NAME),LOWER(NAME),LCASE(NAME),UCASE(NAME) FROM STUDENTS;
+
+SELECT * FROM [STUDENTS].[DBO].[STUDENTS] CROSS JOIN [STUDENTS].[DBO].[EMPLOYEE]
+
+SELECT * FROM STUDENTS S INNER JOIN ADDRESS_TABLE AT
+ON S.NAME=AT.ANAME INNER JOIN FACULTY_INFO FI ON
+S.SALARY = FI.FACULTY_SALARY;
+
+SELF JOIN
+SELECT * FROM [STUDENTS].[DBO].[STUDENTS] A, [STUDENTS].[DBO].[STUDENTS] B WHERE A.SALARY > B.SALARY;
+  </textarea>
+</form>
+   
+</body>
+</html>

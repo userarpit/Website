@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>NUM SORT</title>
+  <meta name="description" content="NUM SORT" />
+  <meta name="revised" content="08/07/2022" />
+  <meta name="author" content = "Arpit Khandelwal" />
+  <meta http-equiv = "Content-Type" content = "text/html; charset = UTF-8" />
+  <meta http-equiv = "Content-Script-Type" content = "text/JavaScript" />
+  <link rel = "stylesheet" type = "text/css" href = "../css/index.css">
+  <script type = "text/javascript" src = "../javascript/index.js"/></script>
+  <noscript>
+    JavaScript is disabled. Please enabled it.
+  </noscript>
+</head>
+    <body>
+
+<table>
+  <tr>
+    
+    <td><span style="font-size:20px; color:rgb(30, 156, 235)">NUM SORT</span></td>
+  </tr>
+</table>
+<form>
+<textarea  id="coboldb2cicstextarea" rows="22" cols="50">
+//MATERFT JOB NOTIFY=&SYSUID
+//*
+//STEP1 EXEC PGM=SORT
+//SYSOUT   DD SYSOUT=*
+//SORTIN DD DSN=ARPIT.SEQ.SORTIN,DISP=SHR
+//SORTOUT DD SYSOUT=*
+//SYSIN DD *
+    SORT FIELDS=COPY
+    OMIT COND=(1,05,FS,NE,NUM)
+/*
+</textarea>
+</form>
+   
+</body>
+</html>

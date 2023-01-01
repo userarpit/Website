@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Multiple programs in single file</title>
+  <meta name="description" content="Multiple programs in single file" />
+  <meta name="revised" content="08/07/2022" />
+  <meta name="author" content = "Arpit Khandelwal" />
+  <meta http-equiv = "Content-Type" content = "text/html; charset = UTF-8" />
+  <meta http-equiv = "Content-Script-Type" content = "text/JavaScript" />
+  <link rel = "stylesheet" type = "text/css" href = "../css/index.css">
+  <script type = "text/javascript" src = "../javascript/index.js"/></script>
+  <noscript>
+    JavaScript is disabled. Please enabled it.
+  </noscript>
+</head>
+    <body>
+
+<table>
+    <tr>
+        
+        <td><span style="font-size:20px; color:rgb(30, 156, 235)">Multiple programs in single file</span></td>
+    </tr>
+</table>
+<form>
+<textarea  id="coboldb2cicstextarea" rows="22" cols="50">
+       ID DIVISION.
+       PROGRAM-ID. CPGM6.
+       ENVIRONMENT DIVISION.
+       CONFIGURATION SECTION.
+       SOURCE-COMPUTER. ABC.
+       OBJECT-COMPUTER. PROGRAM COLLATING SEQUENCE IS A-NAME.
+       SPECIAL-NAMES. CURRENCY SIGN IS 'F',
+                      CLASS DIGIT IS "0" THRU "4",
+                      ALPHABET A-NAME IS STANDARD-1.
+       INPUT-OUTPUT SECTION.
+       DATA DIVISION.
+       WORKING-STORAGE SECTION.
+       01 WS-A    PIC XX IS GLOBAL VALUE 'AB'.
+       PROCEDURE DIVISION.
+           CALL 'CPGM7'.
+           STOP RUN.
+       ID DIVISION.
+       PROGRAM-ID. CPGM7.
+       DATA DIVISION.
+       WORKING-STORAGE SECTION.
+       PROCEDURE DIVISION.
+           DISPLAY 'CPGM7'.
+           DISPLAY WS-A.
+           EXIT PROGRAM.
+       ID DIVISION.
+       PROGRAM-ID. CPGM8 IS COMMON.
+       DATA DIVISION.
+       WORKING-STORAGE SECTION.
+       PROCEDURE DIVISION.
+           DISPLAY 'CPGM8'.
+           DISPLAY WS-A.
+           EXIT PROGRAM.
+       END PROGRAM CPGM8.
+       END PROGRAM CPGM7.
+       END PROGRAM CPGM6.
+</textarea>
+</form>
+   
+</body>
+</html>
