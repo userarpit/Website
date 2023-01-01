@@ -1,5 +1,16 @@
-td {
-  padding-right: 20px;
+
+
+.tdsubheading {
+  font-family: Verdana, Geneva, Tahoma, sans-serif; 
+  font-size: 18px;
+  color:rgb(30, 156, 235);
+  padding-bottom: 30px;
+}
+
+.desc {
+  font-family: Verdana, Geneva, Tahoma, sans-serif; 
+  font-size: 13px;
+  color:black
 }
 
 a {
@@ -7,15 +18,15 @@ a {
 }
 
 a:link{
-  color:lightslategrey;
+  color:rgb(30, 156, 235)
 }
 
 a:visited{
-  color:lightslategrey;
+  color:rgb(30, 156, 235)
 }
 
 a:hover{
-  color:blue;
+  color: blue
 }
 
 a:focus{
@@ -23,7 +34,7 @@ a:focus{
 }
 
 a:active{
-  color:lightslategrey;
+  color: rgb(30, 156, 235);
 }
 
 .headingtable {
@@ -40,7 +51,7 @@ a:active{
     margin-top: 50px;    
 }
 
-.contenttable {
+.table {
     border: 0px solid;
     position: absolute;
     top:0;
@@ -49,4 +60,6 @@ a:active{
     right: 0;    
     margin-left: 5%;
     margin-top: 125px;
+    width: 80%;
 }
+
