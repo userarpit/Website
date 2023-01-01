@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>REMOVE DUPLICATE ROWS</title>
+  <meta name="description" content="REMOVE DUPLICATE ROWS" />
+  <meta name="revised" content="08/07/2022" />
+  <meta name="author" content = "Arpit Khandelwal" />
+  <meta http-equiv = "Content-Type" content = "text/html; charset = UTF-8" />
+  <meta http-equiv = "Content-Script-Type" content = "text/JavaScript" />
+  <link rel = "stylesheet" type = "text/css" href = "../css/index.css">
+  <script type = "text/javascript" src = "../javascript/index.js"/></script>
+  <noscript>
+    JavaScript is disabled. Please enabled it.
+  </noscript>
+</head>
+    <body>
+
+<table>
+  <tr>
+    
+    <td><span style="font-size:20px; color:rgb(30, 156, 235)">REMOVE DUPLICATE ROWS</span></td>
+  </tr>
+</table>
+<form>
+<textarea  id="coboldb2cicstextarea" rows="22" cols="50">
+SELECT * FROM FACULTY_INFO;
+SELECT FACULTY_FIRST_NAME,FACULTY_LAST_NAME,FACULTY_DEPT_ID,COUNT(*)
+FROM FACULTY_INFO GROUP BY FACULTY_FIRST_NAME,FACULTY_LAST_NAME,
+FACULTY_DEPT_ID HAVING COUNT(*) > 1;
+
+DELETE
+FROM FACULTY_INFO
+WHERE FACULTY_ID NOT IN (
+SELECT MAX(FACULTY_ID) FROM FACULTY_INFO
+GROUP BY FACULTY_FIRST_NAME,FACULTY_LAST_NAME,FACULTY_DEPT_ID
+); COMMIT;
+</textarea>
+</form>
+   
+</body>
+</html>

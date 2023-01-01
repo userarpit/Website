@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Search Initialization Occurs Clause</title>
+  <meta name="description" content="Search Initialization Occurs Clause" />
+  <meta name="revised" content="08/07/2022" />
+  <meta name="author" content = "Arpit Khandelwal" />
+  <meta http-equiv = "Content-Type" content = "text/html; charset = UTF-8" />
+  <meta http-equiv = "Content-Script-Type" content = "text/JavaScript" />
+  <link rel = "stylesheet" type = "text/css" href = "../css/index.css">
+  <script type = "text/javascript" src = "../javascript/index.js"/></script>
+  <noscript>
+    JavaScript is disabled. Please enabled it.
+  </noscript>
+</head>
+    <body>
+
+<table>
+    <tr>
+        
+        <td><span style="font-size:20px; color:rgb(30, 156, 235)">Search Initialization Occurs Clause</span></td>
+    </tr>
+</table>
+<form>
+<textarea  id="coboldb2cicstextarea" rows="22" cols="50">
+       ID DIVISION.
+       PROGRAM-ID. CPGM5.
+       ENVIRONMENT DIVISION.
+       CONFIGURATION SECTION.
+       SOURCE-COMPUTER. ABC.
+       OBJECT-COMPUTER. PROGRAM COLLATING SEQUENCE IS A-NAME.
+       SPECIAL-NAMES. CURRENCY SIGN IS 'F',
+                      CLASS DIGIT IS "0" THRU "4",
+                      ALPHABET A-NAME IS STANDARD-1.
+       INPUT-OUTPUT SECTION.
+       DATA DIVISION.
+       WORKING-STORAGE SECTION.
+       01 WS-COUNT PIC 9.
+       01 WS-A     PIC FFF9.00.
+       01 WS-B.
+          05 WS-B1 PIC X(3) VALUE 'THE'.
+          05 WS-B2 PIC X(4) VALUE 'KING'.
+          05 WS-B3 PIC X(6) VALUE 'MASTER'.
+          66 WS-B1-RENAME RENAMES WS-B1 THRU WS-B2.
+       01 WS-DAYS-TABLE.
+          05 WS-DAY-ENTRY  PIC XXX OCCURS 7 TIMES
+                           INDEXED BY WS-DAY-IDX.
+          05 WS-COUNT-ENT  PIC 9 OCCURS 7 TIMES
+                           INDEXED BY WS-COUNT-IDX.
+       01 WS-ADD-CA.
+          05 WS-C1    PIC 99 VALUE 12.
+          05 WS-C2    PIC XX VALUE '12'.
+          05 WS-C3    REDEFINES WS-C2 PIC 9(2).
+          05 WS-C4    PIC 99 VALUE 24.
+       01 WS-ADD-CB.
+          05 WS-C1    PIC 99 VALUE 38.
+          05 WS-C2    PIC XX VALUE '12'.
+          05 WS-C3    REDEFINES WS-C2 PIC 9(2).
+          05 WS-C4    PIC 99 VALUE 26.
+       LINKAGE SECTION.
+       01 WS-LK-DATA.
+           05 WS-LK-LENGTH    PIC S9(4) COMP.
+           05 WS-LK-DATA1     PIC X(104).
+       PROCEDURE DIVISION USING WS-LK-DATA.
+       0000-MAIN-PARA.
+           INITIALIZE WS-DAYS-TABLE REPLACING NUMERIC BY 1
+                      ALPHANUMERIC BY 'MON'.
+           MOVE 0 TO WS-COUNT.
+           PERFORM 1000-PARA WITH TEST AFTER UNTIL WS-COUNT = 1
+           STOP RUN.
+       1000-PARA.
+           DISPLAY 'HELLO:' WS-COUNT.
+           ADD +1 TO WS-COUNT.
+           DISPLAY WS-COUNT.
+           MOVE 35 TO WS-A.
+           IF WS-COUNT IS NUMERIC
+           DISPLAY 'DIGIT'.
+           DISPLAY WS-A.
+           DISPLAY WS-B1-RENAME.
+           MOVE 'YOU' TO WS-B1-RENAME.
+           DISPLAY WS-B1.
+           DISPLAY WS-B2.
+           PERFORM VARYING WS-DAY-IDX FROM 1 BY 1 UNTIL WS-DAY-IDX > 7
+               DISPLAY WS-DAY-ENTRY(WS-DAY-IDX)
+           END-PERFORM.
+           PERFORM VARYING WS-COUNT-IDX FROM 1 BY 1
+                   UNTIL WS-COUNT-IDX > 7
+               DISPLAY WS-COUNT-ENT(WS-COUNT-IDX)
+           END-PERFORM.
+           DISPLAY WS-LK-LENGTH.
+           DISPLAY WS-LK-DATA1.
+           ADD CORR WS-ADD-CA TO WS-ADD-CB.
+           DISPLAY WS-C1 OF WS-ADD-CB.
+           DISPLAY WS-C2 OF WS-ADD-CB.
+           DISPLAY WS-C3 OF WS-ADD-CB.
+           DISPLAY WS-C4 OF WS-ADD-CB.
+           PERFORM 1000-PARA1 THRU 2000-PARA1.
+           SET WS-COUNT-IDX TO 4.
+           COMPUTE WS-COUNT-ENT(WS-COUNT-IDX) =
+                   WS-COUNT-ENT(WS-COUNT-IDX - 1) +
+                   WS-COUNT-ENT(WS-COUNT-IDX).
+           DISPLAY WS-COUNT-ENT(WS-COUNT-IDX).
+           MOVE 'MON' TO WS-DAY-ENTRY(1).
+           MOVE 'TUE' TO WS-DAY-ENTRY(2).
+           MOVE 'WED' TO WS-DAY-ENTRY(3).
+           MOVE 'THU' TO WS-DAY-ENTRY(4).
+           MOVE 'FRI' TO WS-DAY-ENTRY(5).
+           MOVE 'SAT' TO WS-DAY-ENTRY(6).
+           MOVE 'SUN' TO WS-DAY-ENTRY(7).
+           SET WS-DAY-IDX TO 1.
+           SEARCH WS-DAY-ENTRY
+             AT END
+               DISPLAY 'END'
+             WHEN WS-DAY-ENTRY(WS-DAY-IDX) = 'TUE'
+               DISPLAY 'FOUND1'
+             WHEN WS-DAY-ENTRY(WS-DAY-IDX) = 'MON'
+               DISPLAY 'FOUND2'
+           END-SEARCH.
+       1000-PARA1.
+            DISPLAY '1000-PARA1'.
+       2000-PARA2.
+            DISPLAY '1000-PARA2'.
+            GO TO 2000-PARA1.
+            EXIT.
+       3000-PARA3.
+            DISPLAY '3000-PARA3'.
+       2000-PARA1.
+            DISPLAY '2000-PARA1'.
+       2100-PARA2.
+            DISPLAY '2100-PARA2'.
+</textarea>
+</form>
+   
+</body>
+</html>

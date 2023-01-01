@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>paging logic</title>
+  <meta name="description" content="paging logic" />
+  <meta name="revised" content="08/07/2022" />
+  <meta name="author" content = "Arpit Khandelwal" />
+  <meta http-equiv = "Content-Type" content = "text/html; charset = UTF-8" />
+  <meta http-equiv = "Content-Script-Type" content = "text/JavaScript" />
+  <link rel = "stylesheet" type = "text/css" href = "../css/index.css">
+  <script type = "text/javascript" src = "../javascript/index.js"/></script>
+  <noscript>
+    JavaScript is disabled. Please enabled it.
+  </noscript>
+</head>
+    <body>
+
+<table>
+    <tr>
+        
+        <td><span style="font-size:20px; color:rgb(30, 156, 235)">paging logic</span></td>
+    </tr>
+</table>
+<form>
+<textarea  id="coboldb2cicstextarea" rows="22" cols="50">
+       ID DIVISION.
+       PROGRAM-ID. BANKQ.
+       DATA DIVISION.
+       WORKING-STORAGE SECTION.
+       COPY BANKQUE.
+       COPY DFHBMSCA.
+       COPY DFHAID.
+       01 WS-DTTM        PIC S9(15) COMP-3.
+       01 WS-COMMAREA    PIC X(01).
+       01 WS-BYE         PIC X(03) VALUE 'BYE'.
+       01 WS-RESP        PIC S9(8) COMP.
+       01 WS-ITEM        PIC S9(4) COMP.
+       01 WS-COUNT1      PIC 9(3)  VALUE ZERO.
+       01 WS-ROW-COUNT   PIC 9     VALUE ZERO.
+       01 WS-CUS-REC.
+           05 WS-CNO     PIC 9(5).
+           05 WS-CNAME   PIC X(20).
+       LINKAGE SECTION.
+       01 DFHCOMMAREA.
+           05 WS-LS-COUNT PIC 9(3).
+       PROCEDURE DIVISION.
+           IF EIBCALEN = 0 THEN
+               MOVE LOW-VALUES TO BANKQUMI BANKQUMO
+               MOVE 'ENTER FIELDS' TO MSGO
+               PERFORM 1000-SEND-BANK-MAP
+           ELSE
+               IF WS-LS-COUNT = 0
+                   MOVE +1          TO WS-ITEM
+               ELSE
+                   MOVE WS-LS-COUNT TO WS-ITEM
+               END-IF
+               PERFORM 2000-RECEIVE-BANK-MAP
+           END-IF.
+           EXEC CICS RETURN
+               TRANSID('BQUE')
+               COMMAREA(WS-COUNT1)
+               LENGTH(LENGTH OF WS-COUNT1)
+           END-EXEC.
+       1000-SEND-BANK-MAP.
+           PERFORM 1050-DATE-TIME-PARA.
+           EXEC CICS SEND
+               MAP('BANKQUM')
+               MAPSET('BANKQUE')
+               FROM(BANKQUMO)
+               ERASE
+           END-EXEC.
+       1050-DATE-TIME-PARA.
+           EXEC CICS ASKTIME
+                    ABSTIME(WS-DTTM)
+           END-EXEC.
+           EXEC CICS FORMATTIME
+                     ABSTIME(WS-DTTM)
+                     DDMMYYYY(DTO)
+                     DATESEP('-')
+                     TIME(TMO)
+                     TIMESEP(':')
+           END-EXEC.
+       2000-RECEIVE-BANK-MAP.
+           EXEC CICS RECEIVE
+               MAP('BANKQUM')
+               MAPSET('BANKQUE')
+               INTO(BANKQUMI)
+           END-EXEC.
+
+           PERFORM 2100-FKEY-CHECK-PARA.
+           PERFORM 1000-SEND-BANK-MAP.
+       2100-FKEY-CHECK-PARA.
+           EVALUATE EIBAID
+               WHEN DFHPF1
+                   PERFORM 2110-WRITE-QUEUE
+               WHEN DFHPF2
+                   PERFORM 2120-READ-PAGE-UP
+               WHEN DFHPF3
+                   PERFORM 2130-READ-PAGE-DOWN
+               WHEN DFHPF4
+                   EXEC CICS SEND
+                       FROM(WS-BYE)
+                       LENGTH(LENGTH OF WS-BYE)
+                       ERASE
+                   END-EXEC
+                   EXEC CICS RETURN END-EXEC
+           END-EVALUATE.
+       2110-WRITE-QUEUE.
+           IF A11I IS NUMERIC THEN
+               MOVE A11I TO WS-CNO
+           END-IF.
+           MOVE A12I   TO WS-CNAME.
+           EXEC CICS WRITEQ TS
+               QUEUE('BQUE')
+               FROM(WS-CUS-REC)
+               LENGTH(LENGTH OF WS-CUS-REC)
+               ITEM(WS-ITEM)
+               RESP(WS-RESP)
+           END-EXEC.
+           EVALUATE WS-RESP
+               WHEN DFHRESP(NORMAL)
+                  MOVE 'WRITE IS DONE,QUEUE' TO MSGO
+               WHEN OTHER
+                  MOVE 'ERROR IN WRITE' TO MSGO
+           END-EVALUATE.
+       2120-READ-PAGE-UP.
+           COMPUTE WS-ITEM = WS-ITEM - 6.
+           IF WS-ITEM IS NEGATIVE THEN
+               COMPUTE WS-ITEM = WS-ITEM + 6
+               MOVE 'ON TOP OF QUEUE' TO MSGO
+           ELSE
+               MOVE 1 TO WS-ROW-COUNT
+               PERFORM 3 TIMES
+                   EXEC CICS READQ TS
+                       QUEUE('BQUE')
+                       INTO(WS-CUS-REC)
+                       LENGTH(LENGTH OF WS-CUS-REC)
+                       ITEM(WS-ITEM)
+                       RESP(WS-RESP)
+                   END-EXEC
+                   EVALUATE WS-RESP
+                       WHEN DFHRESP(NORMAL)
+                           EVALUATE WS-ROW-COUNT
+                               WHEN 1
+                                MOVE WS-CNO TO A11O
+                                MOVE WS-CNAME TO A12O
+                               WHEN 2
+                                MOVE WS-CNO TO A21O
+                                MOVE WS-CNAME TO A22O
+                               WHEN 3
+                                MOVE WS-CNO TO A31O
+                                MOVE WS-CNAME TO A32O
+                           END-EVALUATE
+                           ADD 1 TO WS-ROW-COUNT
+                           ADD 1 TO WS-ITEM
+                       WHEN DFHRESP(ITEMERR)
+                           ADD 1 TO WS-ROW-COUNT
+                           ADD 1 TO WS-ITEM
+                           MOVE 'QUEUE END'     TO MSGO
+                       WHEN OTHER
+                          MOVE 'ERROR IN READ' TO MSGO
+                   END-EVALUATE
+               END-PERFORM
+           END-IF.
+           MOVE WS-ITEM TO WS-COUNT1.
+       2130-READ-PAGE-DOWN.
+           MOVE 1 TO WS-ROW-COUNT.
+           PERFORM 3 TIMES
+               EXEC CICS READQ TS
+                   QUEUE('BQUE')
+                   INTO(WS-CUS-REC)
+                   LENGTH(LENGTH OF WS-CUS-REC)
+                   ITEM(WS-ITEM)
+                   RESP(WS-RESP)
+               END-EXEC
+               EVALUATE WS-RESP
+                   WHEN DFHRESP(NORMAL)
+                       IF WS-ROW-COUNT = 1
+                           MOVE LOW-VALUES TO BANKQUMO
+                       END-IF
+                       EVALUATE WS-ROW-COUNT
+                           WHEN 1
+                            MOVE WS-CNO TO A11O
+                            MOVE WS-CNAME TO A12O
+                           WHEN 2
+                            MOVE WS-CNO TO A21O
+                            MOVE WS-CNAME TO A22O
+                           WHEN 3
+                            MOVE WS-CNO TO A31O
+                            MOVE WS-CNAME TO A32O
+                       END-EVALUATE
+                       ADD 1 TO WS-ROW-COUNT
+                       ADD 1 TO WS-ITEM
+                   WHEN DFHRESP(ITEMERR)
+                       IF WS-ROW-COUNT NOT EQUAL 1
+                           ADD 1 TO WS-ROW-COUNT
+                           ADD 1 TO WS-ITEM
+                       END-IF
+                       MOVE 'ON BOTTOM OF QUEUE' TO MSGO
+                   WHEN OTHER
+                      MOVE 'ERROR IN READ' TO MSGO
+               END-EVALUATE
+           END-PERFORM.
+           MOVE WS-ITEM TO WS-COUNT1.
+  </textarea>
+</form>
+   
+</body>
+</html>

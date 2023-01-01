@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>OUTFIL INCLUDE OVERLAY</title>
+  <meta name="description" content="OUTFIL INCLUDE OVERLAY" />
+  <meta name="revised" content="08/07/2022" />
+  <meta name="author" content = "Arpit Khandelwal" />
+  <meta http-equiv = "Content-Type" content = "text/html; charset = UTF-8" />
+  <meta http-equiv = "Content-Script-Type" content = "text/JavaScript" />
+  <link rel = "stylesheet" type = "text/css" href = "../css/index.css">
+  <script type = "text/javascript" src = "../javascript/index.js"/></script>
+  <noscript>
+    JavaScript is disabled. Please enabled it.
+  </noscript>
+</head>
+    <body>
+
+<table>
+  <tr>
+    
+    <td><span style="font-size:20px; color:rgb(30, 156, 235)">OUTFIL INCLUDE OVERLAY</span></td>
+  </tr>
+</table>
+<form>
+<textarea  id="coboldb2cicstextarea" rows="22" cols="50">
+//MATERF1 JOB NOTIFY=&SYSUID
+//STEP1 EXEC PGM=SORT
+//SYSOUT DD SYSOUT=*
+//SORTIN DD DSN=ARPIT.DEPT.DATA,DISP=SHR
+//OUTDD1  DD DSN=ARPIT.SEQ.NEW.OUT1,DISP=SHR
+//OUTDD2  DD DSN=ARPIT.SEQ.NEW.OUT2,DISP=SHR
+//OUTDD3  DD DSN=ARPIT.SEQ.NEW.OUT3,DISP=SHR
+//OUTDD4  DD SYSOUT=*
+//SYSIN DD DATA
+     SORT FIELDS=(1,5,CH,A)
+     OUTFIL FNAMES=OUTDD1,INCLUDE=(30,5,CH,EQ,C'DEPT1'),
+     OVERLAY=(60:SEQNUM,1,ZD,START=1,INCR=1)
+     OUTFIL FNAMES=OUTDD2,INCLUDE=(30,5,CH,EQ,C'DEPT2'),REPEAT=2,
+     OVERLAY=(60:SEQNUM,2,ZD,START=2,INCR=2)
+     OUTFIL FNAMES=OUTDD3,INCLUDE=(30,5,CH,EQ,C'DEPT3'),REPEAT=3,
+     OVERLAY=(60:SEQNUM,3,ZD,START=2,INCR=3)
+/*
+</textarea>
+</form>
+   
+</body>
+</html>

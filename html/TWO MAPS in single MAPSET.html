@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>TWO MAPS in single MAPSET</title>
+  <meta name="description" content="TWO MAPS in single MAPSET" />
+  <meta name="revised" content="08/07/2022" />
+  <meta name="author" content = "Arpit Khandelwal" />
+  <meta http-equiv = "Content-Type" content = "text/html; charset = UTF-8" />
+  <meta http-equiv = "Content-Script-Type" content = "text/JavaScript" />
+  <link rel = "stylesheet" type = "text/css" href = "../css/index.css">
+  <script type = "text/javascript" src = "../javascript/index.js"/></script>
+  <noscript>
+    JavaScript is disabled. Please enabled it.
+  </noscript>
+</head>
+    <body>
+
+<table>
+    <tr>
+        
+        <td><span style="font-size:20px; color:rgb(30, 156, 235)">TWO MAPS in single MAPSET</span></td>
+    </tr>
+</table>
+<form>
+<textarea  id="coboldb2cicstextarea" rows="22" cols="50">
+TWOMAPS  DFHMSD TYPE=&SYSPARM,TIOAPFX=YES,MODE=INOUT,LANG=COBOL,       X
+               CTRL=(FREEKB,FRSET),STORAGE=AUTO
+
+TWOMAPA  DFHMDI SIZE=(12,80),LINE=1,COLUMN=1
+
+         DFHMDF POS=(6,12),LENGTH=3,INITIAL='N1:',ATTRB=ASKIP
+N1       DFHMDF POS=(6,16),LENGTH=3,INITIAL='___',                     X
+               ATTRB=(UNPROT,IC,NUM,FSET),PICIN='9(3)',PICOUT='9(3)'
+         DFHMDF POS=(6,20),LENGTH=1,ATTRB=ASKIP
+
+         DFHMDF POS=(7,12),LENGTH=3,INITIAL='N2:',ATTRB=ASKIP
+N2       DFHMDF POS=(7,16),LENGTH=3,INITIAL='___',                     X
+               ATTRB=(UNPROT,NUM,FSET),PICIN='9(3)',PICOUT='9(3)'
+         DFHMDF POS=(7,20),LENGTH=1,ATTRB=ASKIP
+
+         DFHMDF POS=(8,12),LENGTH=7,INITIAL='RESULT:',ATTRB=ASKIP
+RS       DFHMDF POS=(8,20),LENGTH=6,INITIAL='______',ATTRB=PROT
+
+TWOMAPB  DFHMDI SIZE=(12,80),LINE=13,COLUMN=1
+         DFHMDF POS=(6,12),LENGTH=4,INITIAL='MSG:',ATTRB=ASKIP
+MSG      DFHMDF POS=(6,17),LENGTH=30,ATTRB=PROT
+         DFHMDF POS=(6,48),LENGTH=1,ATTRB=ASKIP
+
+         DFHMDF POS=(8,12),LENGTH=48,ATTRB=ASKIP,                      X
+               INITIAL='F1:ADD,F2:SUB,F3:MUL,F4:DIV,F5:EXIT,F6:REFRESH'
+         DFHMSD TYPE=FINAL
+         END
+ </textarea>
+</form>
+   
+</body>
+</html>

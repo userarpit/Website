@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Select from DB2 table</title>
+  <meta name="description" content="Select from DB2 table" />
+  <meta name="revised" content="08/07/2022" />
+  <meta name="author" content = "Arpit Khandelwal" />
+  <meta http-equiv = "Content-Type" content = "text/html; charset = UTF-8" />
+  <meta http-equiv = "Content-Script-Type" content = "text/JavaScript" />
+  <link rel = "stylesheet" type = "text/css" href = "../css/index.css">
+  <script type = "text/javascript" src = "../javascript/index.js"/></script>
+  <noscript>
+    JavaScript is disabled. Please enabled it.
+  </noscript>
+</head>
+    <body>
+
+<table>
+    <tr>
+        
+        <td><span style="font-size:20px; color:rgb(30, 156, 235)">Select from DB2 table</span></td>
+    </tr>
+</table>
+<form>
+<textarea  id="coboldb2cicstextarea" rows="22" cols="50">
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. CDB22.
+       ENVIRONMENT DIVISION.
+       INPUT-OUTPUT SECTION.
+       FILE-CONTROL.
+           SELECT FILE1 ASSIGN TO DD1
+           ORGANIZATION IS SEQUENTIAL
+           ACCESS MODE IS SEQUENTIAL
+           FILE STATUS IS WS-FS1.
+       DATA DIVISION.
+       FILE SECTION.
+       FD FILE1.
+       COPY CUSTCOPY.
+       WORKING-STORAGE SECTION.
+       01 WS-SQLCODE  PIC S9(9)        SIGN IS LEADING SEPARATE.
+       01 WS-CNAME-NULL PIC S9(4) COMP.
+       01 WS-CNO-NUMBER PIC X(5).
+       01 WS-FS1    PIC 99.
+           EXEC SQL INCLUDE SQLCA END-EXEC.
+           EXEC SQL INCLUDE CUST  END-EXEC.
+       PROCEDURE DIVISION.
+           ACCEPT WS-CNO-NUMBER.
+           MOVE WS-CNO-NUMBER TO HV-CNO.
+           EXEC SQL
+               SELECT CNO,CNAME,CADD,CBAL,CDOB INTO :HV-CNO,
+               :HV-CNAME :WS-CNAME-NULL, :HV-CADD,:HV-CBAL,:HV-CDOB
+               FROM CUST_ARPIT
+               WHERE CNO = :HV-CNO
+           END-EXEC.
+           MOVE SQLCODE TO WS-SQLCODE.
+           DISPLAY WS-SQLCODE.
+           EVALUATE SQLCODE
+               WHEN 000
+                   DISPLAY HV-CNO
+                   IF WS-CNAME-NULL = -1
+                       DISPLAY 'NAME IS UNKNOWN'
+                   ELSE
+                       DISPLAY HV-CNAME
+                   END-IF
+                   DISPLAY HV-CADD
+                   DISPLAY HV-CBAL
+                   DISPLAY HV-CDOB
+                   DISPLAY SQLCAID
+                   DISPLAY SQLCABC
+                   DISPLAY SQLERRM
+                   DISPLAY SQLERRP
+                   DISPLAY SQLERRD(3)
+                   DISPLAY SQLWARN
+                   DISPLAY SQLEXT
+               WHEN -204
+                   DISPLAY 'TABLE NOT FOUND'
+               WHEN -206
+                   DISPLAY 'COLUMN NOT FOUND'
+               WHEN +100
+                   DISPLAY  'RECORD NOT FOUND'
+               WHEN -305
+                   DISPLAY 'NULL NOT HANDLED'
+               WHEN -811
+                   DISPLAY 'MORE THAN 1 ROW'
+               WHEN OTHER
+                   DISPLAY 'ERROR IN SELECT' SQLCODE
+           END-EVALUATE.
+	STOP RUN.
+</textarea>
+</form>
+   
+</body>
+</html>

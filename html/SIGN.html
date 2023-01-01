@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SIGN</title>
+  <meta name="description" content="SIGN" />
+  <meta name="revised" content="08/07/2022" />
+  <meta name="author" content = "Arpit Khandelwal" />
+  <meta http-equiv = "Content-Type" content = "text/html; charset = UTF-8" />
+  <meta http-equiv = "Content-Script-Type" content = "text/JavaScript" />
+  <link rel = "stylesheet" type = "text/css" href = "../css/index.css">
+  <script type = "text/javascript" src = "../javascript/index.js"/></script>
+  <noscript>
+    JavaScript is disabled. Please enabled it.
+  </noscript>
+</head>
+    <body>
+
+<table>
+    <tr>
+        
+        <td><span style="font-size:20px; color:rgb(30, 156, 235)">SIGN</span></td>
+    </tr>
+</table>
+<form>
+<textarea  id="coboldb2cicstextarea" rows="22" cols="50">
+       ID DIVISION.
+       PROGRAM-ID. CPGM2.
+       DATA DIVISION.
+       WORKING-STORAGE SECTION.
+       01 WS-A     PIC S9(3).
+       01 WS-B     PIC S9(3).
+       01 WS-C     PIC 9(4).9(2).
+       01 WS-D     PIC 9(4)V9(2).
+       01 WS-A1    PIC S9(3) SIGN IS LEADING SEPARATE.
+       01 WS-B1    PIC S9(3) SIGN IS LEADING SEPARATE.
+       01 WS-A2    PIC S9(3) SIGN IS TRAILING SEPARATE.
+       01 WS-B2    PIC S9(3) SIGN IS TRAILING SEPARATE.
+       PROCEDURE DIVISION.
+           MOVE -25 TO WS-A.
+           MOVE +25 TO WS-B.
+           MOVE 1234.56 TO WS-C.
+           MOVE 1234.56 TO WS-D.
+           DISPLAY WS-A.
+           DISPLAY WS-B.
+           DISPLAY WS-C.
+           DISPLAY WS-D.
+           DISPLAY LENGTH OF WS-C.
+           DISPLAY LENGTH OF WS-D.
+           COMPUTE WS-D = WS-D + 1.
+           DISPLAY WS-D.
+           MOVE WS-A TO WS-A1 WS-A2.
+           MOVE WS-B TO WS-B1 WS-B2.
+           DISPLAY WS-A1.
+           DISPLAY WS-A2.
+           DISPLAY WS-B1.
+           DISPLAY WS-B2.
+           COMPUTE WS-A1 = WS-A1 + 1.
+           DISPLAY WS-A1.
+           DISPLAY LENGTH OF WS-A.
+           DISPLAY LENGTH OF WS-A1.
+           STOP RUN.
+  </textarea>
+</form>
+   
+</body>
+</html>

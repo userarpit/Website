@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>RRDS Delete</title>
+  <meta name="description" content="RRDS Delete" />
+  <meta name="revised" content="08/07/2022" />
+  <meta name="author" content = "Arpit Khandelwal" />
+  <meta http-equiv = "Content-Type" content = "text/html; charset = UTF-8" />
+  <meta http-equiv = "Content-Script-Type" content = "text/JavaScript" />
+  <link rel = "stylesheet" type = "text/css" href = "../css/index.css">
+  <script type = "text/javascript" src = "../javascript/index.js"/></script>
+  <noscript>
+    JavaScript is disabled. Please enabled it.
+  </noscript>
+</head>
+    <body>
+
+<table>
+    <tr>
+        
+        <td><span style="font-size:20px; color:rgb(30, 156, 235)">RRDS Delete</span></td>
+    </tr>
+</table>
+<form>
+<textarea  id="coboldb2cicstextarea" rows="22" cols="50">
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. RRDSDEL.
+       ENVIRONMENT DIVISION.
+       INPUT-OUTPUT SECTION.
+       FILE-CONTROL.
+           SELECT RRDSFILE ASSIGN TO RRDSFILE
+           ORGANIZATION IS RELATIVE
+           ACCESS MODE IS RANDOM
+           RELATIVE KEY IS WS-RRDS-KEY
+           FILE STATUS IS WS-FS.
+       DATA DIVISION.
+       FILE SECTION.
+       FD RRDSFILE.
+       01 WS-EMP-REC.
+           05 WS-ENO           PIC X(5).
+           05 WS-ENAME         PIC X(20).
+           05 WS-EADD          PIC X(30).
+           05 WS-EBAL          PIC X(5).
+           05 FILLER           PIC X(20).
+       WORKING-STORAGE SECTION.
+       01 WS-FS                PIC 99.
+       01 WS-RRDS-KEY          PIC 9999.
+       PROCEDURE DIVISION.
+           PERFORM 1000-OPEN-FILE.
+           PERFORM 2000-DELETE-FILE.
+           PERFORM 9000-CLOSE-FILE.
+           STOP RUN.
+       1000-OPEN-FILE.
+           OPEN I-O    RRDSFILE.
+           EVALUATE WS-FS
+               WHEN 0
+                   DISPLAY 'OPEN SUCCESSFUL'
+               WHEN OTHER
+                   DISPLAY 'ERROR IN OPEN ' WS-FS
+           END-EVALUATE.
+       2000-DELETE-FILE.
+           ACCEPT WS-RRDS-KEY.
+           DELETE RRDSFILE.
+           EVALUATE WS-FS
+               WHEN 0
+                   DISPLAY 'DELETE SUCCESSFUL'
+                   DISPLAY WS-EMP-REC
+               WHEN OTHER
+                   DISPLAY 'ERROR IN DELETE ' WS-FS
+           END-EVALUATE.
+       9000-CLOSE-FILE.
+           CLOSE RRDSFILE.
+           EVALUATE WS-FS
+               WHEN 0
+                   DISPLAY 'CLOSE SUCCESSFUL'
+               WHEN OTHER
+                   DISPLAY 'ERROR IN CLOSE ' WS-FS
+           END-EVALUATE.
+</textarea>
+</form>
+   
+</body>
+</html>
