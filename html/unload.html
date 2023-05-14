@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>UNLOAD</title>
+  <meta name="description" content="UNLOAD" />
+  <meta name="revised" content="08/07/2022" />
+  <meta name="author" content="Arpit Khandelwal" />
+  <meta http-equiv="Content-Type" content="text/html; charset = UTF-8" />
+  <meta http-equiv="Content-Script-Type" content="text/JavaScript" />
+  <link rel="stylesheet" type="text/css" href="../css/index.css">
+  <script type="text/javascript" src="../javascript/index.js"></script>
+  <noscript>
+    JavaScript is disabled. Please enabled it.
+  </noscript>
+</head>
+
+<body>
+
+  <table>
+    <tr>
+
+      <td><span style="font-size:20px; color:rgb(30, 156, 235)">Unload Table</span></td>
+    </tr>
+  </table>
+  <form>
+    <textarea id="coboldb2cicstextarea" rows="22" cols="50">
+//MATERFA JOB NOTIFY=&SYSUID
+//*
+//STEP01 EXEC PGM=IDCAMS
+//SYSPRINT DD SYSOUT=*
+//SYSIN DD *
+  DELETE MATERF.DB2.UNLOAD.SYSREC
+  DELETE MATERF.DB2.UNLOAD.SYSPUNCH
+  SET MAXCC = 0
+/*
+//* UNLOAD TABLE
+//UNLOAD EXEC DSNUPROC
+//SYSPRINT DD SYSOUT=*
+//UTPRINT DD SYSOUT=*
+//CEEDUMP DD SYSOUT=*
+//SYSPN1 DD DSN=MATERF.DB2.UNLOAD.SYSPUNCH,
+//          DISP=(NEW,CATLG,CATLG),UNIT=SYSDA,
+//          SPACE=(TRK,(10,1),RLSE),
+//          DCB=(RECFM=FB,LRECL=38,DSORG=PS)
+//SYSRE1 DD DSN=MATERF.DB2.UNLOAD.SYSREC,
+//          DISP=(NEW,CATLG,CATLG),UNIT=SYSDA,
+//          SPACE=(TRK,(10,1),RLSE),
+//          DCB=(RECFM=FB,LRECL=30,DSORG=PS)
+//SYSIN DD *
+UNLOAD TABLESPACE DBMATE1.TSMATERF
+PUNCHDDN SYSPN1 UNLDDN SYSRE1
+FROM TABLE CUST_ARPIT
+(CNO,CNAME,CADD,CBAL,CDOB)
+/*
+</textarea>
+  </form>
+
+</body>
+
+</html>

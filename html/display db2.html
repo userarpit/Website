@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>-DISPLAY</title>
+  <meta name="description" content="-DISPLAY" />
+  <meta name="revised" content="08/07/2022" />
+  <meta name="author" content="Arpit Khandelwal" />
+  <meta http-equiv="Content-Type" content="text/html; charset = UTF-8" />
+  <meta http-equiv="Content-Script-Type" content="text/JavaScript" />
+  <link rel="stylesheet" type="text/css" href="../css/index.css">
+  <script type="text/javascript" src="../javascript/index.js"></script>
+  <noscript>
+    JavaScript is disabled. Please enabled it.
+  </noscript>
+</head>
+
+<body>
+
+  <table>
+    <tr>
+
+      <td><span style="font-size:20px; color:rgb(30, 156, 235)">-DISPLAY</span></td>
+    </tr>
+  </table>
+  <form>
+    <textarea id="coboldb2cicstextarea" rows="22" cols="50">
+on DB2 command screen
+  -DISPLAY DATABASE(DBMATE1) SPACENAM(TSMATERF)
+
+or
+
+using job
+//MATERFA JOB NOTIFY=&SYSUID
+//*
+//STEP02 EXEC PGM=IKJEFT01,DYNAMNBR=64
+//STEPLIB DD DISP=SHR,DSN=DSNA10.DBAG.SDSNEXIT
+//        DD DISP=SHR,DSN=DSNA10.SDSNLOAD
+//SYSUT3 DD UNIT=SYSDA,SPACE=(CYL,(500,50))
+//SYSUT4 DD UNIT=SYSDA,SPACE=(CYL,(500,50))
+//SYSPRINT DD SYSOUT=*
+//SYSTSPRT DD SYSOUT=*
+//SYSTSIN DD *
+ DSN S(DBAG)
+  -DISPLAY DATABASE(DBMATE1) SPACENAM(TSMATERF)
+//*
+</textarea>
+  </form>
+
+</body>
+
+</html>
