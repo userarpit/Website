@@ -3,8 +3,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>DB2 utility</title>
-  <meta name="description" content="DB2 utility" />
+  <title>REPAIR</title>
+  <meta name="description" content="REPAIR" />
   <meta name="revised" content="08/07/2022" />
   <meta name="author" content="Arpit Khandelwal" />
   <meta http-equiv="Content-Type" content="text/html; charset = UTF-8" />
@@ -20,24 +20,28 @@
 
   <table>
     <tr>
-      <td><span style="font-size:20px; color:rgb(30, 156, 235)">DB2 utility</span></td>
+
+      <td><span style="font-size:20px; color:rgb(30, 156, 235)">REPAIR</span></td>
     </tr>
   </table>
-  <table>
-    <tr>
-      <td id="indextabletd"><a href="unload.html">Unload Table</a></td>
-    </tr>
-    <tr>
-      <td id="indextabletd"><a href="load.html">Load Table</a></td>
-    </tr>
-    <tr>
-      <td id="indextabletd"><a href="display start stop db2.html">-DISPLAY START STOP command</a></td>
-    </tr>
-    <tr>
-      <td id="indextabletd"><a href="repair.html">REPAIR command</a></td>
-    </tr>
-  </table>
-  <br />
+  <form>
+    <textarea id="coboldb2cicstextarea" rows="22" cols="50">
+//MATERFA JOB NOTIFY=&SYSUID
+//*
+//STEP03 EXEC DSNUPROC
+//SYSPRINT DD SYSOUT=*
+//UTPRINT DD SYSOUT=*
+//SYSUDUMP DD SYSOUT=*
+//ABENDAID DD SYSOUT=*
+//CEEDUMP DD SYSOUT=*
+//LEOUT DD SYSOUT=*
+//SYSIN DD *
+  REPAIR SET TABLESPACE DBMATE1.TSMATERF NOCOPYPEND
+  RUNSTATS TABLESPACE DBMATE1.TSMATERF INDEX SHRLEVEL REFERENCE
+/*
+</textarea>
+  </form>
+
 </body>
 
 </html>
