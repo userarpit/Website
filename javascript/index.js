@@ -10,3 +10,10 @@ function displaydatetime() {
     var dt = new Date();
     document.getElementById("timevalue").innerHTML = dt.toLocaleTimeString();
 }
+
+function login() {
+    var password = prompt("Enter Password");
+    if (password == "Arpit@10") {
+        location.replace("main.html")
+    }
+}
