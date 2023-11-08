@@ -12,8 +12,5 @@ function displaydatetime() {
 }
 
 function login() {
-    var password = prompt("Enter Password");
-    if (password == "Arpit@10") {
-        location.replace("main.html")
-    }
+    location.replace("main.html")
 }
