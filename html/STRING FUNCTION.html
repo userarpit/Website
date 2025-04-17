@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>STRING FUNCTION</title>
+  <meta name="description" content="STRING FUNCTION" />
+  <meta name="revised" content="08/07/2022" />
+  <meta name="author" content = "Arpit Khandelwal" />
+  <meta http-equiv = "Content-Type" content = "text/html; charset = UTF-8" />
+  <meta http-equiv = "Content-Script-Type" content = "text/JavaScript" />
+  <link rel = "stylesheet" type = "text/css" href = "../css/index.css">
+  <script type = "text/javascript" src = "../javascript/index.js"></script>
+  <noscript>
+    JavaScript is disabled. Please enabled it.
+  </noscript>
+</head>
+    <body>
+
+<table>
+  <tr>
+    
+    <td><span style="font-size:20px; color:rgb(30, 156, 235)">STRING FUNCTION</span></td>
+  </tr>
+</table>
+<form>
+<textarea  id="coboldb2cicstextarea" rows="22" cols="50">
+SELECT FACULTY_CITY, ASCII(FACULTY_CITY) FROM FACULTY_INFO;
+
+SELECT CONCAT(CONCAT(FACULTY_FIRST_NAME, ' '),FACULTY_LAST_NAME) FROM
+FACULTY_INFO;
+
+SELECT INSERT('INSERTING',4,2,'IS'),
+     INSERT('INSERTING',4,0,'IS'),
+     INSERT('INSERTING',4,2,'')
+     FROM SYSIBM.SYSDUMMY1;
+
+SELECT
+  INSTR( 'THERE ARE SOME STORES', 'RE',1,3) RESULT
+FROM
+  SYSIBM.SYSDUMMY1;
+
+SELECT
+   LEFT('IBM DB2',3) RESULT
+FROM
+   SYSIBM.SYSDUMMY1;
+
+SELECT * FROM FACULTY_INFO WHERE LOCATE('VIHAR',FACULTY_ADDRESS) > 0;
+
+SELECT
+    UPPER('ASDF GHHR')
+FROM
+    SYSIBM.SYSDUMMY1;
+
+SELECT LPAD(NAME,15,'.' ) AS NAME FROM STUDENTS;
+
+SELECT
+    LTRIM('ABC123','ABC') RESULT
+FROM
+    SYSIBM.SYSDUMMY1;
+
+SELECT
+    REPLACE('IBM DB2','DB2','DB2') RESULT
+FROM
+    SYSIBM.SYSDUMMY1;
+
+UPDATE FACULTY_INFO
+SET FACULTY_ADDRESS = REPLACE(FACULTY_ADDRESS,'CALONY','COLONY');
+
+SELECT
+    TRIM(BOTH FROM ' A TEST STRING ') RESULT
+FROM
+    SYSIBM.SYSDUMMY1;
+</textarea>
+</form>
+   
+</body>
+</html>
